@@ -1,36 +1,16 @@
-import "./App.css"
+import Home from "./Pages/Home";
+import Cadastro from "./Pages/Cadastro";
+import Login from "./Pages/Login";
+import Aba_Plantao from "./Pages/Aba-Plantao";
+import Menu from "./Pages/Menu";
+import Perfil from "./Pages/Perfil";
+import Routes from "./routes"
 
 function App() {
 
   return (
     <div>
-      <div className="all">
-        <div className="frame">
-          <div className="gap">
-            <input className="input"></input>
-            <input className="input"></input>
-            <input className="input"></input>
-          </div>
-            <div>
-              <button className="input"></button>
-            </div>
-          <div className="div-button">
-            <button className="button"> Cadastrar </button>
-            <button className="button"> Logue aqui !!! </button>
-          </div>
-        </div>
-        <div className="frame">
-          <div className="div-button"> 
-            <button className="button"> Logar </button>
-            <button className="button"> Cadastre-se aqui </button>
-          </div>
-          <div className="gap">
-            <input className="input"></input>
-            <input className="input"></input>
-            <input className="input"></input>
-          </div>
-        </div>
-      </div>
+      <Routes/>
     </div>
   )
     
