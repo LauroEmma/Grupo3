@@ -1,16 +1,17 @@
-import Home from "./Pages/Home";
-import Cadastro from "./Pages/Cadastro";
-import Login from "./Pages/Login";
-import Aba_Plantao from "./Pages/Aba-Plantao";
-import Menu from "./Pages/Menu";
-import Perfil from "./Pages/Perfil";
-import Routes from "./routes"
+
+import Home from "./Pages/Home"
+import Plantao from "./Pages/Plantao"
+import Cadastro from "./Pages/Cadastro"
+import Login from "./Pages/Login"
+import Menu from "./Pages/Menu"
+import Perfil from "./Pages/Perfil"
+
 
 function App() {
 
   return (
     <div>
-      <Routes/>
+     <Plantao/>
     </div>
   )
     
