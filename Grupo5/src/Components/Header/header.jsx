@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "./styles";
 import { FaBars } from "react-icons/fa";
+import Sidebar from "../Sidebar/sidebar";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);

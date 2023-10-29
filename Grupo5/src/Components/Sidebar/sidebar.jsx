@@ -4,7 +4,7 @@ import { FaTimes, FaHome, FaMedkit, FaUserAlt } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
-import SidebarItem from "../SidebarItem/SidebarItem";
+import SidebarItem from "../SidebarItem";
 
 const Sidebar = ({ active }) => {
   const closeSidebar = () => {

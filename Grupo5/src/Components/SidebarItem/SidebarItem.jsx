@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "../Header/styles";
+import { Container } from "./styles";
 
 const SidebarItem = ({ Icon, Text }) => {
   return (

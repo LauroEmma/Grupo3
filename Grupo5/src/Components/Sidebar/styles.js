@@ -15,7 +15,7 @@ export const Container = styled.div`
     position: fixed;
     color: white;
     height: 22px;
-    margin-top: 42px;
+    margin-top: 30px;
     margin-left: 32px;
     cursor: pointer;
   }
@@ -33,5 +33,5 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-top: 100px;
+  margin-top: 80px;
 `;
