@@ -4,6 +4,7 @@ width: 100%;
 height: 100%;
 background-color: #3D8EBC;   
 border: none;
+padding: 0;
 
 `
 export const DivBackground = styled.div`
@@ -57,6 +58,4 @@ font-weight: 700;
 line-height: normal;
 text-align :center ;
 display: inline-block;
-
-
 `;

@@ -4,7 +4,7 @@ import { Body } from "./Styles";
 import { Retangulodeinformaços } from "./Styles";
 import { Header } from "./Styles";
 import { DivHeader } from "./Styles";
-
+import Vetor from "./Vetor.png"
 
 function Plantao() {
 
@@ -17,13 +17,12 @@ function Plantao() {
 
                 <Retangulodeinformaços>
                     <Header>
-                    <DivHeader>Medicos Em Plantao</DivHeader>
-                        <DivHeader>Hospital</DivHeader>
-                        <DivHeader>Barra Pesquisa</DivHeader>
-                        <DivHeader>Cargo</DivHeader>
-                        <DivHeader>Chegada</DivHeader>
-                        <DivHeader>Tempo decorrido</DivHeader>
-
+                    <DivHeader>Medicos Em Plantao<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
+                        <DivHeader>Hospital<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
+                        <DivHeader>Barra Pesquisa<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
+                        <DivHeader>Cargo<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
+                        <DivHeader>Chegada<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
+                        <DivHeader>Tempo decorrido<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
                     </Header>
                 </Retangulodeinformaços>
             </DivBackground>
