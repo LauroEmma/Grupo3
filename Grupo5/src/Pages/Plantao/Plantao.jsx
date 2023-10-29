@@ -1,35 +1,122 @@
-import { DivBackground } from "./Styles";
-import { BotaoPlantao } from "./Styles";
-import { Body } from "./Styles";
-import { Retangulodeinformaços } from "./Styles";
-import { Header } from "./Styles";
-import { DivHeader } from "./Styles";
-import Vetor from "./Vetor.png"
+import { DivBackground, Tabela1, BotaoPlantao } from "./Styles";
+
+const dataSource = [
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+  {
+    key: "2",
+    name: "John",
+    age: 42,
+    address: "10 Downing Street",
+  },
+  {
+    key: "3",
+    name: "jose",
+    age: 52,
+    address: "rua casilda",
+  },
+  {
+    key: "3",
+    name: "jose",
+    age: 52,
+    address: "rua casilda",
+  },
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+];
+const columns = [
+  {
+    title: "Médicos em plantão",
+    dataIndex: "name",
+    key: "Médicos em plantão",
+  },
+  {
+    title: "Hospital",
+    dataIndex: "Hospital",
+    key: "Hospital",
+  },
+
+  {
+    title: "Cargo",
+    dataIndex: "Cargo",
+    key: "Cargo",
+  },
+  {
+    title: "Chegada",
+    dataIndex: "Chegada",
+    key: "Chegada",
+  },
+  {
+    title: "Tempo decorrido",
+    dataIndex: "Tempo_Decorrido",
+    key: "Tempo decorrido",
+  },
+];
 
 function Plantao() {
-
-    return(
-        <Body>
-            <DivBackground> 
-                <BotaoPlantao>
-                    Iniciar Plantao
-                </BotaoPlantao>
-
-                <Retangulodeinformaços>
-                    <Header>
-                    <DivHeader>Medicos Em Plantao<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Hospital<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Barra Pesquisa<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Cargo<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Chegada<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Tempo decorrido<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                    </Header>
-                </Retangulodeinformaços>
-            </DivBackground>
-        </Body>
-  
-    )
-
+  return (
+    <DivBackground>
+      <BotaoPlantao>Iniciar Plantão</BotaoPlantao>
+      <Tabela1
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+        scroll={{ x: true, y: 525 }}
+      />
+    </DivBackground>
+  );
 }
 
 export default Plantao;
