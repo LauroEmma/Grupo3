@@ -7,8 +7,10 @@ function App() {
 
   return (
     <>
+
       <GlobalStyles/>
       <Routes/>
+      
     </>
   )
     
