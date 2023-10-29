@@ -40,3 +40,17 @@ export const ModalInterior = styled.div`
     margin-top: 5px;
   }
 `;
+export const BotaoConfirma = styled.button`
+  width: 202px;
+  height: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+
+  color: #fdfdfd;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: #67b9e7;
+`;

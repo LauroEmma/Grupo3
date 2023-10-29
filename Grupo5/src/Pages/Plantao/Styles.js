@@ -26,7 +26,7 @@ export const Tabela1 = styled(Table)`
   margin-top: 20px;
   width: 1200px;
   margin-left: 200px;
-
+  position: absolute;
   border: 10px;
   color: #1d4aa3;
 
@@ -75,6 +75,7 @@ export const Informaçoesextras = styled.textarea`
   resize: none;
   text-align: top;
 `;
+
 export const BotaoConfirma = styled.button`
   width: 202px;
   height: 20px;
@@ -88,4 +89,13 @@ export const BotaoConfirma = styled.button`
   font-weight: 700;
   line-height: normal;
   background-color: #67b9e7;
+`;
+export const Cobretabela = styled.div`
+  background-color: #f4fbff;
+  margin-left: 200px;
+  margin-top: 20px;
+  position: fixed;
+  width: 1200px;
+  height: 1000px;
+  border-radius: 10px;
 `;

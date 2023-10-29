@@ -1,8 +1,8 @@
 import React from "react";
-import { Modalbackground, ModalInterior } from "./styles";
+import { Modalbackground, ModalInterior, BotaoConfirma } from "./styles";
 import { AiOutlineClose } from "react-icons/Ai";
 
-export default function Modal({ isOpen, setModalOpen, children }) {
+export default function Modal({ isOpen, setModalOpen, children, onConfirm }) {
   if (isOpen) {
     return (
       <Modalbackground>
@@ -10,6 +10,14 @@ export default function Modal({ isOpen, setModalOpen, children }) {
           <AiOutlineClose onClick={setModalOpen}> </AiOutlineClose>
 
           {children}
+          <BotaoConfirma
+            onClick={() => {
+              onConfirm();
+              setModalOpen();
+            }}
+          >
+            Confirmar
+          </BotaoConfirma>
         </ModalInterior>
       </Modalbackground>
     );
