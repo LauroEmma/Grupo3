@@ -43,21 +43,49 @@ export const Tabela1 = styled(Table)`
   .ant-table-row {
     height: 95px;
     font-size: 20px;
-    &::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 6px;
-    }
   }
 `;
-export const Modalfundo = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+export const Inputmodal = styled.input`
+  color: #000;
+  width: 324px;
+  height: 15px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  background: #67b9e7;
+  flex-shrink: 0;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+export const Informaçoesextras = styled.textarea`
+  color: #000;
+  width: 324px;
+  height: 131.615px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  background: #67b9e7;
+  flex-shrink: 0;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  resize: none;
+  text-align: top;
+`;
+export const BotaoConfirma = styled.button`
+  width: 202px;
+  height: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+
+  color: #fdfdfd;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: #67b9e7;
 `;

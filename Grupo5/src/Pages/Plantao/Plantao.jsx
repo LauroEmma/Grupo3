@@ -1,4 +1,13 @@
-import { DivBackground, Tabela1, BotaoPlantao } from "./Styles";
+import {
+  DivBackground,
+  Tabela1,
+  BotaoPlantao,
+  Inputmodal,
+  Informaçoesextras,
+  BotaoConfirma,
+} from "./Styles";
+import Modal from "../../components/Modal";
+import { useState } from "react";
 
 const dataSource = [
   {
@@ -106,9 +115,22 @@ const columns = [
 ];
 
 function Plantao() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <DivBackground>
-      <BotaoPlantao>Iniciar Plantão</BotaoPlantao>
+      <BotaoPlantao onClick={() => setOpenModal(true)}>
+        Iniciar Plantão
+      </BotaoPlantao>
+      <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
+        <p> Confimação De Plantão</p>
+        <p> Em qual hospital você atuará</p>
+        <Inputmodal></Inputmodal>
+        <p>Qual seu cargo nesse hospital</p>
+        <Inputmodal></Inputmodal>
+        <p>informaçoes adicionais?</p>
+        <Informaçoesextras></Informaçoesextras>
+        <BotaoConfirma>confirmar</BotaoConfirma>
+      </Modal>
       <Tabela1
         dataSource={dataSource}
         columns={columns}
