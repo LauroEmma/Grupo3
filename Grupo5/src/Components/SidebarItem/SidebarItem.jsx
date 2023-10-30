@@ -1,9 +1,9 @@
 import React from "react";
 import { Container } from "./styles";
 
-const SidebarItem = ({ Icon, Text, props }) => {
+const SidebarItem = ({ Icon, Text, onClick }) => {
   return (
-    <Container onClick={props.onLick}>
+    <Container onClick={onClick}>
       <Icon />
       {Text}
     </Container>

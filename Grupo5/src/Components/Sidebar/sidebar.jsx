@@ -21,22 +21,22 @@ const Sidebar = ({ active }) => {
         <SidebarItem
           Icon={FaMedkit}
           Text="Plantão"
-          onClick={() => navigate("plantao")}
+          onClick={() => navigate("/plantao")}
         />
         <SidebarItem
           Icon={FaUserAlt}
           Text="Meu Perfil"
-          onClick={() => navigate("perfil")}
+          onClick={() => navigate("/perfil")}
         />
         <SidebarItem
           Icon={FiLogIn}
           Text="Login"
-          onClick={() => navigate("login")}
+          onClick={() => navigate("/login")}
         />
         <SidebarItem
           Icon={BsFillPersonLinesFill}
           Text="Cadastro"
-          onClick={() => navigate("cadastro")}
+          onClick={() => navigate("/cadastro")}
         />
       </Content>
     </Container>
