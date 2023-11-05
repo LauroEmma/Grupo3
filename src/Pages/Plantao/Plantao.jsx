@@ -6,7 +6,7 @@ import {
   Informaçoesextras,
   Cobretabela,
 } from "./Styles";
-import Modal from "../../components/Modal";
+import Modal from "../../Components/Modal/Modal";
 import { useState } from "react";
 
 const dataSource = [
