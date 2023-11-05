@@ -7,7 +7,7 @@ export const Loginimg = styled.img`
 
 export const Input1 = styled.input`
     width: 77.65%;
-    height: 15.67%;
+    height: 18.67%;
     flex-shrink: 0; 
     border-radius: 80px;
     background: #72C7F6; 
@@ -99,7 +99,7 @@ export const Divall = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color: white;
 `
 export const Botao1 = styled.button`
     padding-top: 50px;
