@@ -1,35 +1,85 @@
-import { DivBackground } from "./Styles";
-import { BotaoPlantao } from "./Styles";
-import { Body } from "./Styles";
-import { Retangulodeinformaços } from "./Styles";
-import { Header } from "./Styles";
-import { DivHeader } from "./Styles";
-import Vetor from "./Vetor.png"
+import {
+  DivBackground,
+  Tabela1,
+  BotaoPlantao,
+  Inputmodal,
+  Informaçoesextras,
+  Cobretabela,
+} from "./Styles";
+import Modal from "../../components/Modal";
+import { useState } from "react";
+
+const dataSource = [
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+];
+const columns = [
+  {
+    title: "Médicos em plantão",
+    dataIndex: "name",
+    key: "Médicos em plantão",
+  },
+  {
+    title: "Hospital",
+    dataIndex: "Hospital",
+    key: "Hospital",
+  },
+
+  {
+    title: "Cargo",
+    dataIndex: "Cargo",
+    key: "Cargo",
+  },
+  {
+    title: "Chegada",
+    dataIndex: "Chegada",
+    key: "Chegada",
+  },
+  {
+    title: "Tempo decorrido",
+    dataIndex: "Tempo_Decorrido",
+    key: "Tempo decorrido",
+  },
+];
 
 function Plantao() {
-
-    return(
-        <Body>
-            <DivBackground> 
-                <BotaoPlantao>
-                    Iniciar Plantao
-                </BotaoPlantao>
-
-                <Retangulodeinformaços>
-                    <Header>
-                    <DivHeader>Medicos Em Plantao<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Hospital<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Barra Pesquisa<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Cargo<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Chegada<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                        <DivHeader>Tempo decorrido<img src={Vetor} alt="Descrição da imagem" /></DivHeader>
-                    </Header>
-                </Retangulodeinformaços>
-            </DivBackground>
-        </Body>
-  
-    )
-
+  const [openModal, setOpenModal] = useState(false);
+  const handleConfirm = () => {
+    alert("Confirmado");
+  };
+  return (
+    <DivBackground>
+      <BotaoPlantao onClick={() => setOpenModal(true)}>
+        Iniciar Plantão
+      </BotaoPlantao>
+      <Modal
+        isOpen={openModal}
+        setModalOpen={() => setOpenModal(!openModal)}
+        onConfirm={handleConfirm}
+      >
+        <p> Confimação De Plantão</p>
+        <p> Em qual hospital você atuará</p>
+        <Inputmodal></Inputmodal>
+        <p>Qual seu cargo nesse hospital</p>
+        <Inputmodal></Inputmodal>
+        <p>informaçoes adicionais?</p>
+        <Informaçoesextras></Informaçoesextras>
+      </Modal>
+      <Cobretabela> ola</Cobretabela>
+      <Tabela1
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+        scroll={{ x: true, y: 525 }}
+      />
+    </DivBackground>
+  );
 }
 
 export default Plantao;

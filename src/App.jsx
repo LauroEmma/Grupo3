@@ -1,19 +1,13 @@
-
-import GlobalStyles from "./styles/GlobalStyles"
-import Routes from "./rotas.jsx"
-
+import GlobalStyles from "./styles/GlobalStyles";
+import Routes from "./rotas.jsx";
 
 function App() {
-
   return (
     <>
-
-      <GlobalStyles/>
-      <Routes/>
-      
+      <GlobalStyles />
+      <Routes />
     </>
-  )
-    
+  );
 }
 
-export default App
+export default App;
