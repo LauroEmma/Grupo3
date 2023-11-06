@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Carousel } from "react-responsive-carousel";
+import { Table } from "antd";
 
 export const CarouselStyled = styled(Carousel)`
   width: 600px;
@@ -7,14 +8,13 @@ export const CarouselStyled = styled(Carousel)`
   margin: auto;
   margin-top: 0px;
 `;
-export const Body = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #f6f7fc;
-  margin: 0;
-  padding: 0;
-`;
 
+export const DivBackground = styled.div`
+  width: 100%;
+  height: 105vh;
+  background-color: #3d8ebc;
+  border: none;
+`;
 export const BotaoPlantao = styled.button`
   width: 202px;
   height: 32px;
@@ -30,52 +30,85 @@ export const BotaoPlantao = styled.button`
   font-weight: 700;
   line-height: normal;
 `;
-export const Retangulodeinformaços = styled.div`
-  width: 1000px;
-  height: 95px;
-  background-color: #72c7f6;
-  margin: auto;
-  margin-top: 150px;
-`;
+export const Tabela1 = styled(Table)`
+  margin-top: 20px;
+  width: 1100px;
+  margin-left: 200px;
+  position: absolute;
+  border: 10px;
+  color: #1d4aa3;
 
-export const DivHeader = styled.div`
-  width: 195px;
-  height: 95px;
+  .ant-table-thead .ant-table-cell {
+    color: #faefef;
+    background-color: #72c7f6;
+    height: 95px;
+    font-size: 20px;
+  }
+  .ant-table-tbody {
+    color: #1d4aa3;
+    background-color: #f4fbff;
+  }
+  .ant-table-row {
+    height: 95px;
+    font-size: 20px;
+  }
+`;
+export const Inputmodal = styled.input`
+  color: #000;
+  width: 324px;
+  height: 15px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  background: #67b9e7;
   flex-shrink: 0;
-  background-color: #72c7f6;
-  color: #faefef;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  display: flex;
-  margin: auto;
-  position: relative;
 `;
-
-export const Texto = styled.p`
-  position: absolute;
-  margin: 0;
-`;
-
-export const MedicosAtivos = styled.div`
-  width: 1000px;
-  height: 95px;
+export const Informaçoesextras = styled.textarea`
+  color: #000;
+  width: 324px;
+  height: 131.615px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  background: #67b9e7;
   flex-shrink: 0;
-  background-color: #1b5ea5;
-  color: #faefef;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  display: flex;
-  margin: auto;
-  position: relative;
+  resize: none;
+  text-align: top;
 `;
 
-export const NovoMedico = styled.p`
-  position: absolute;
-  margin: 0;
+export const BotaoConfirma = styled.button`
+  width: 202px;
+  height: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+
+  color: #fdfdfd;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: #67b9e7;
+`;
+export const Cobretabela = styled.div`
+  background-color: #3d8ebc;
+  margin-left: 200px;
+  margin-top: 20px;
+  position: fixed;
+  width: 1200px;
+  height: 1000px;
+  border-radius: 10px;
+`;
+
+export const Espacamento = styled.div`
+  background-color: #3d8ebc;
+  height: 150px;
 `;
