@@ -33,19 +33,37 @@ export const ModalInterior = styled.div`
   font-weight: 700;
   line-height: normal;
   text-align: center;
+  padding: 7px;
+  @media (max-width: 600px) {
+    height: 378px;
+    width: 292px;
+    font-size: 13px;
+  }
+  @media (max-width: 350px) {
+    height: 378px;
+    width: 230px;
+    font-size: 12px;
+  }
+
   > svg {
     cursor: pointer;
     position: fixed;
     margin-left: 170px;
     margin-top: 5px;
+    @media (max-width: 600px) {
+      margin-left: 135px;
+    }
+    @media (max-width: 350px) {
+      margin-left: 100px;
+    }
   }
 `;
 export const BotaoConfirma = styled.button`
   width: 202px;
-  height: 20px;
+  height: 30px;
   margin-top: 20px;
   border-radius: 20px;
-
+  border: 2px solid black;
   color: #fdfdfd;
   font-family: Inter;
   font-size: 13px;

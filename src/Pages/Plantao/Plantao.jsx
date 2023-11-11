@@ -4,7 +4,8 @@ import {
   BotaoPlantao,
   Inputmodal,
   Informaçoesextras,
-  Cobretabela,
+  Linha,
+  LinhaTabela,
 } from "./Styles";
 import Modal from "../../components/Modal";
 import { useState } from "react";
@@ -24,27 +25,32 @@ const columns = [
     title: "Médicos em plantão",
     dataIndex: "name",
     key: "Médicos em plantão",
+    width: 100,
   },
   {
     title: "Hospital",
     dataIndex: "Hospital",
     key: "Hospital",
+    width: 100,
   },
 
   {
     title: "Cargo",
     dataIndex: "Cargo",
     key: "Cargo",
+    width: 100,
   },
   {
     title: "Chegada",
     dataIndex: "Chegada",
     key: "Chegada",
+    width: 100,
   },
   {
     title: "Tempo decorrido",
     dataIndex: "Tempo_Decorrido",
     key: "Tempo decorrido",
+    width: 100,
   },
 ];
 
@@ -55,9 +61,11 @@ function Plantao() {
   };
   return (
     <DivBackground>
-      <BotaoPlantao onClick={() => setOpenModal(true)}>
-        Iniciar Plantão
-      </BotaoPlantao>
+      <Linha>
+        <BotaoPlantao onClick={() => setOpenModal(true)}>
+          Iniciar Plantão
+        </BotaoPlantao>
+      </Linha>
       <Modal
         isOpen={openModal}
         setModalOpen={() => setOpenModal(!openModal)}
@@ -71,13 +79,14 @@ function Plantao() {
         <p>informaçoes adicionais?</p>
         <Informaçoesextras></Informaçoesextras>
       </Modal>
-      <Cobretabela> ola</Cobretabela>
-      <Tabela1
-        dataSource={dataSource}
-        columns={columns}
-        pagination={false}
-        scroll={{ x: true, y: 525 }}
-      />
+      <LinhaTabela>
+        <Tabela1
+          dataSource={dataSource}
+          columns={columns}
+          pagination={false}
+          scroll={{ x: 200, y: 525 }}
+        />
+      </LinhaTabela>
     </DivBackground>
   );
 }

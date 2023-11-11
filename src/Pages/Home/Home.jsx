@@ -1,15 +1,22 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { CarouselStyled } from "./Styles";
-import { BotaoPlantao } from "./Styles";
-import { Body } from "./Styles";
-import { Retangulodeinformaços } from "./Styles";
-import { DivHeader } from "./Styles";
-import { Texto } from "./Styles";
-import { MedicosAtivos } from "./Styles";
-import { NovoMedico } from "./Styles";
-import Vetor from "./Vetor.png";
+import {
+  CarouselStyled,
+  DivBackground,
+  Tabela1,
+  BotaoPlantao,
+  Inputmodal,
+  Informaçoesextras,
+  Linha,
+  LinhaTabela,
+} from "./Styles";
+import Modal from "../../Components/Modal/Modal";
+import { useState } from "react";
 
 function Home() {
+  const [openModal, setOpenModal] = useState(false);
+  const handleConfirm = () => {
+    alert("Confirmado");
+  };
   const images = [
     {
       author: "Lauro Emmanuel",
@@ -29,35 +36,84 @@ function Home() {
     },
   ];
   return (
-    <div>
-      <Body>
-        <div>
-          <CarouselStyled showThumbs={false} infiniteLoop={true}>
-            {images.map((image) => (
-              <img src={image.download_url} alt={image.author} />
-            ))}
-          </CarouselStyled>
-        </div>
-        <BotaoPlantao>Iniciar Plantao</BotaoPlantao>
-        <Retangulodeinformaços>
-          <DivHeader>
-            <Texto>Médicos Ativos</Texto>
-            <Texto>Hospital</Texto>
-            <Texto>Cargo</Texto>
-            <Texto>Chegada</Texto>
-            <Texto>Tempo</Texto>
-          </DivHeader>
-          <MedicosAtivos>
-            <NovoMedico> Nome do médico</NovoMedico>
-            <NovoMedico>Nome do hospital</NovoMedico>
-            <NovoMedico>Cargo </NovoMedico>
-            <NovoMedico>Horario de chegada </NovoMedico>
-            <NovoMedico>Tempo de trabalho</NovoMedico>
-          </MedicosAtivos>
-        </Retangulodeinformaços>
-      </Body>
-    </div>
+    <DivBackground>
+      <CarouselStyled showThumbs={false} infiniteLoop={true}>
+        {images.map((image) => (
+          <img src={image.download_url} alt={image.author} />
+        ))}
+      </CarouselStyled>
+      <Linha>
+        <BotaoPlantao onClick={() => setOpenModal(true)}>
+          Iniciar Sessão
+        </BotaoPlantao>
+      </Linha>
+      <Modal
+        isOpen={openModal}
+        setModalOpen={() => setOpenModal(!openModal)}
+        onConfirm={handleConfirm}
+      >
+        <p> Confimação De Sessão</p>
+        <p> Em qual hospital você atuará</p>
+        <Inputmodal></Inputmodal>
+        <p>Qual seu cargo nesse hospital</p>
+        <Inputmodal></Inputmodal>
+        <p>Informaçoes adicionais?</p>
+        <Informaçoesextras></Informaçoesextras>
+      </Modal>
+
+      <LinhaTabela>
+        <Tabela1
+          dataSource={dataSource}
+          columns={columns}
+          pagination={false}
+          scroll={{ x: 200, y: 525 }}
+        />
+      </LinhaTabela>
+    </DivBackground>
   );
 }
+const dataSource = [
+  {
+    key: "1",
+    name: "Mike",
+    Hospital: "Senhora aparecida",
+    Cargo: "ortopedista",
+    Chegada: "20h",
+    Tempo_Decorrido: "10m",
+  },
+];
+const columns = [
+  {
+    title: "Médicos em atividade",
+    dataIndex: "name",
+    key: "Médicos em atividade",
+    width: 100,
+  },
+  {
+    title: "Hospital",
+    dataIndex: "Hospital",
+    key: "Hospital",
+    width: 100,
+  },
+
+  {
+    title: "Cargo",
+    dataIndex: "Cargo",
+    key: "Cargo",
+    width: 100,
+  },
+  {
+    title: "Chegada",
+    dataIndex: "Chegada",
+    key: "Chegada",
+    width: 100,
+  },
+  {
+    title: "Tempo decorrido",
+    dataIndex: "Tempo_Decorrido",
+    key: "Tempo decorrido",
+    width: 100,
+  },
+];
 
 export default Home;
