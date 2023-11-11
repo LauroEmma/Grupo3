@@ -17,26 +17,30 @@ const Sidebar = ({ active }) => {
     <Container sidebar={active} const navigate={useNavigate()}>
       <FaTimes onClick={closeSidebar} />
       <Content>
-        <SidebarItem Icon={FaHome} Text="Home" onClick={() => navigate("/")} />
+        <SidebarItem
+          Icon={FaHome}
+          Text="Home"
+          onClick={() => (navigate("/"), closeSidebar())}
+        />
         <SidebarItem
           Icon={FaMedkit}
           Text="Plantão"
-          onClick={() => navigate("/plantao")}
+          onClick={() => (navigate("/plantao"), closeSidebar())}
         />
         <SidebarItem
           Icon={FaUserAlt}
           Text="Meu Perfil"
-          onClick={() => navigate("/perfil")}
+          onClick={() => (navigate("/perfil"), closeSidebar())}
         />
         <SidebarItem
           Icon={FiLogIn}
           Text="Login"
-          onClick={() => navigate("/login")}
+          onClick={() => (navigate("/login"), closeSidebar())}
         />
         <SidebarItem
           Icon={BsFillPersonLinesFill}
           Text="Cadastro"
-          onClick={() => navigate("/cadastro")}
+          onClick={() => (navigate("/cadastro"), closeSidebar())}
         />
       </Content>
     </Container>
