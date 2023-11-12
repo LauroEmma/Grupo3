@@ -64,7 +64,7 @@ function Home() {
           dataSource={dataSource}
           columns={columns}
           pagination={false}
-          scroll={{ x: 200, y: 525 }}
+          scroll={{ x: 200, y: 265 }}
         />
       </LinhaTabela>
     </DivBackground>

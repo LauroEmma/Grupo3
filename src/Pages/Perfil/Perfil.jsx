@@ -17,7 +17,7 @@ import {
 } from "./Styles";
 import ImagemHipocrates from "../../Assets/ImgHipocrates.jpg";
 import { useNavigate } from "react-router-dom";
-import Modal from "../../Components/Modal/Modal";
+import Modal from "../../Components/ModalMaior/Modal";
 import { useState } from "react";
 
 function Perfil() {
