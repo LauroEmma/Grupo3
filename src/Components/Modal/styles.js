@@ -23,7 +23,7 @@ export const ModalInterior = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 392px;
-  height: 478px;
+  height: 328px;
   background-color: #3d8ebc;
   border-radius: 30px;
   color: #fff;
@@ -35,12 +35,12 @@ export const ModalInterior = styled.div`
   text-align: center;
   padding: 7px;
   @media (max-width: 600px) {
-    height: 378px;
+    height: 238px;
     width: 292px;
     font-size: 13px;
   }
   @media (max-width: 350px) {
-    height: 378px;
+    height: 238px;
     width: 230px;
     font-size: 12px;
   }
@@ -61,7 +61,7 @@ export const ModalInterior = styled.div`
 export const BotaoConfirma = styled.button`
   width: 202px;
   height: 30px;
-  margin-top: 20px;
+  margin-top: 40px;
   border-radius: 20px;
   border: 2px solid black;
   color: #fdfdfd;

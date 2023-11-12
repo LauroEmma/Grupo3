@@ -105,28 +105,28 @@ export const Inputmodal = styled.input`
     width: 180px;
   }
 `;
-export const Informaçoesextras = styled.textarea`
-  color: #000;
-  width: 324px;
-  height: 131.615px;
-  border-radius: 10px;
-  border: 0.5px solid #000;
-  background: #67b9e7;
-  flex-shrink: 0;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  resize: none;
-  text-align: top;
-  @media (max-width: 600px) {
-    width: 224px;
-  }
-  @media (max-width: 350px) {
-    width: 180px;
-  }
-`;
+// export const Informaçoesextras = styled.textarea`
+//   color: #000;
+//   width: 324px;
+//   height: 131.615px;
+//   border-radius: 10px;
+//   border: 0.5px solid #000;
+//   background: #67b9e7;
+//   flex-shrink: 0;
+//   font-family: Inter;
+//   font-size: 15px;
+//   font-style: normal;
+//   font-weight: 700;
+//   line-height: normal;
+//   resize: none;
+//   text-align: top;
+//   @media (max-width: 600px) {
+//     width: 224px;
+//   }
+//   @media (max-width: 350px) {
+//     width: 180px;
+//   }
+// `;
 
 export const BotaoConfirma = styled.button`
   width: 202px;

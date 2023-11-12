@@ -5,7 +5,7 @@ import {
   Tabela1,
   BotaoPlantao,
   Inputmodal,
-  Informaçoesextras,
+  //  Informaçoesextras,
   Linha,
   LinhaTabela,
 } from "./Styles";
@@ -57,8 +57,6 @@ function Home() {
         <Inputmodal></Inputmodal>
         <p>Qual seu cargo nesse hospital</p>
         <Inputmodal></Inputmodal>
-        <p>Informaçoes adicionais?</p>
-        <Informaçoesextras></Informaçoesextras>
       </Modal>
 
       <LinhaTabela>

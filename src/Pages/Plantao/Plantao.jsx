@@ -3,7 +3,7 @@ import {
   Tabela1,
   BotaoPlantao,
   Inputmodal,
-  Informaçoesextras,
+  //Informaçoesextras,
   Linha,
   LinhaTabela,
 } from "./Styles";
@@ -76,8 +76,6 @@ function Plantao() {
         <Inputmodal></Inputmodal>
         <p>Qual seu cargo nesse hospital</p>
         <Inputmodal></Inputmodal>
-        <p>informaçoes adicionais?</p>
-        <Informaçoesextras></Informaçoesextras>
       </Modal>
       <LinhaTabela>
         <Tabela1
