@@ -14,17 +14,43 @@ import {
   BotaoSair,
   Inputmodal,
   DivBotao,
+  Label,
+  Form,
 } from "./Styles";
 import ImagemHipocrates from "../../Assets/ImgHipocrates.jpg";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../Components/ModalMaior/Modal";
 import { useState } from "react";
+import useAuthStore from "../../stores/auth";
+import api from "../../services/api";
 
 function Perfil() {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
+  const clearAuth = useAuthStore((state) => state.clearAuth);
+  const usuario = useAuthStore((state) => state.usuario);
+  const [email, setEmail] = useState("");
+  const [info_adicionais, setInfo_adicionais] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [nome, setNome] = useState("");
   const handleConfirm = () => {
+    e.preventDefault();
+
     alert("Confirmado");
+  };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.put(`/usuario/${usuario.id}`, {
+        email,
+        cargo,
+        nome,
+        info_adicionais,
+      });
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
   };
   return (
     <DivGeral>
@@ -34,36 +60,67 @@ function Perfil() {
         </DivDaImagem>
         <DivDireita>
           <DivUsuario>
-            <DivNome>Joaozinho</DivNome>
+            <DivNome>{usuario.nome}</DivNome>
           </DivUsuario>
           <DivInfAdic>
-            <DivCargo>Anestesista geral</DivCargo>
-            <DivEmail>joaozinho@cpejr.com.br</DivEmail>
+            <DivCargo>{usuario.cargo}</DivCargo>
+            <DivEmail>{usuario.email}</DivEmail>
           </DivInfAdic>
           <DivInfAdic>
             <DivInfo>Informações adicionais:</DivInfo>
-            <DivInfoTexto>Eu gosto de carne</DivInfoTexto>
+            <DivInfoTexto>{usuario.info_adicionais}</DivInfoTexto>
           </DivInfAdic>
           <DivBotao>
-            <BotaoSair onClick={() => navigate("/")}>Sair</BotaoSair>
+            <BotaoSair onClick={clearAuth}>Sair</BotaoSair>
             <BotaoSair onClick={() => setOpenModal(true)}>
               Alterar Dados
             </BotaoSair>
-            <Modal
-              isOpen={openModal}
-              setModalOpen={() => setOpenModal(!openModal)}
-              onConfirm={handleConfirm}
-            >
-              <p> Insira os dados que quer alterar</p>
-              <p>Novo nome</p>
-              <Inputmodal></Inputmodal>
-              <p>Novo cargo</p>
-              <Inputmodal></Inputmodal>
-              <p>Novo email</p>
-              <Inputmodal></Inputmodal>
-              <p>Informações adicionais</p>
-              <Inputmodal></Inputmodal>
-            </Modal>
+            <Form onSubmit={handleUpdate}>
+              <Modal
+                isOpen={openModal}
+                setModalOpen={() => setOpenModal(!openModal)}
+                onConfirm={handleConfirm}
+                onSubmit={handleUpdate}
+              >
+                <p> Insira os dados que quer alterar</p>
+                <p>Novo nome</p>
+                <Label htmlFor="nome"> </Label>
+                <Inputmodal
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  onChange={(e) => setNome(e.target.value)}
+                  placeholder={usuario.nome}
+                ></Inputmodal>
+                <p>Novo cargo</p>
+                <Label htmlFor="cargo"> </Label>
+                <Inputmodal
+                  type="text"
+                  id="cargo"
+                  name="cargo"
+                  onChange={(e) => setCargo(e.target.value)}
+                  placeholder={usuario.cargo}
+                ></Inputmodal>
+                <p>Novo email</p>
+                <Label htmlFor="email"> </Label>
+                <Inputmodal
+                  type="email"
+                  id="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={usuario.email}
+                ></Inputmodal>
+                <p>Informações adicionais</p>
+                <Label htmlFor="info_adicionais"> </Label>
+                <Inputmodal
+                  type="text"
+                  id="info"
+                  name="info_adicionais"
+                  onChange={(e) => setInfo_adicionais(e.target.value)}
+                  placeholder={usuario.info_adicionais}
+                ></Inputmodal>
+              </Modal>
+            </Form>
           </DivBotao>
         </DivDireita>
       </DivBase>

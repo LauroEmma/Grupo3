@@ -61,7 +61,7 @@ export const Tabela1 = styled(Table)`
     color: #faefef;
     background-color: #72c7f6;
     height: 95px;
-    font-size: 20px;
+    font-size: 19px;
     @media (max-width: 1300px) {
       font-size: 18px;
     }
@@ -124,3 +124,28 @@ export const Inputmodal = styled.input`
 //   resize: none;
 //   text-align: top;
 // `;
+export const BotaoSaida = styled.button`
+  width: 202px;
+  height: 32px;
+  flex-shrink: 0;
+  background-color: white;
+
+  border-radius: 20px;
+  color: black;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media (max-width: 700px) {
+    height: 25px;
+    width: 202px;
+    font-size: 6px;
+  }
+  &:hover {
+    background-color: #4650a7;
+    color: white;
+  }
+`;
+export const Form = styled.form``;
+export const Label = styled.label``;

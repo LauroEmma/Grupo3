@@ -22,24 +22,27 @@ export const DivBackground = styled.div`
   background-color: #3d8ebc;
   border: none;
 `;
-export const BotaoPlantao = styled.button`
+export const BotaoSaida = styled.button`
   width: 202px;
   height: 32px;
   flex-shrink: 0;
-  background-color: #4650a7;
-  margin-right: 3rem;
-  margin-top: 1rem;
+  background-color: white;
+
   border-radius: 20px;
-  color: #fff;
+  color: black;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 10px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     height: 25px;
-    width: 170px;
-    font-size: 15px;
+    width: 202px;
+    font-size: 6px;
+  }
+  &:hover {
+    background-color: #4650a7;
+    color: white;
   }
 `;
 export const Tabela1 = styled(Table)`
@@ -52,7 +55,7 @@ export const Tabela1 = styled(Table)`
     color: #faefef;
     background-color: #72c7f6;
     height: 95px;
-    font-size: 20px;
+    font-size: 19px;
     @media (max-width: 1300px) {
       font-size: 18px;
     }
@@ -105,6 +108,27 @@ export const Inputmodal = styled.input`
     width: 180px;
   }
 `;
+export const BotaoPlantao = styled.button`
+  width: 202px;
+  height: 32px;
+  flex-shrink: 0;
+  background-color: #4650a7;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  border-radius: 20px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media (max-width: 600px) {
+    height: 25px;
+    width: 170px;
+    font-size: 15px;
+  }
+`;
+
 // export const Informaçoesextras = styled.textarea`
 //   color: #000;
 //   width: 324px;
@@ -142,3 +166,5 @@ export const BotaoConfirma = styled.button`
   line-height: normal;
   background-color: #67b9e7;
 `;
+export const Form = styled.form``;
+export const Label = styled.label``;

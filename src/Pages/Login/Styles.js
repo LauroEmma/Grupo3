@@ -3,11 +3,23 @@ import styled from "styled-components";
 export const Loginimg = styled.img`
   height: 720px;
   border-radius: 80px;
+  @media (max-width: 1300px) {
+    height: calc(720px / 3 * 2);
+    border-radius: calc(80px / 3 * 2);
+  }
+  @media (max-width: 614px) {
+    height: 0px;
+    width: 0px;
+  }
+  @media (max-height: 530px) {
+    height: calc(720 / 6 * 2.8px);
+    border-radius: calc(80 / 6 * 2.8px);
+  }
 `;
 
 export const Input1 = styled.input`
-  width: 77.65%;
-  height: 15.67%;
+  width: 414px;
+  height: 61px;
   flex-shrink: 0;
   border-radius: 80px;
   background: #72c7f6;
@@ -18,6 +30,22 @@ export const Input1 = styled.input`
   font-weight: 400;
   line-height: normal;
   padding-left: 24px;
+  @media (max-width: 1300px) {
+    width: calc(414px / 3 * 2);
+    height: calc(61px / 3 * 2);
+    padding-left: calc(24px / 3 * 2);
+    margin-left: calc(50px / 3 * 2);
+    font-size: calc(24px / 3 * 2);
+    border-radius: calc(80px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    width: calc(414 / 6 * 2.8px);
+    height: calc(61 / 6 * 2.8px);
+    padding-left: calc(24 / 6 * 2.8px);
+    margin-left: calc(50 / 6 * 2.8px);
+    font-size: calc(24 / 6 * 2.8px);
+    border-radius: calc(80 / 6 * 2.8px);
+  }
 `;
 
 export const Fonte1 = styled.div`
@@ -32,6 +60,16 @@ export const Fonte1 = styled.div`
   span {
     color: #6eb7fa;
   }
+  @media (max-width: 1300px) {
+    width: calc(400px / 3 * 2);
+    height: calc(30px / 3 * 2);
+    font-size: calc(32px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    width: calc(400 / 6 * 2.8px);
+    height: calc(30 / 6 * 2.8px);
+    font-size: calc(32 / 6 * 2.8px);
+  }
 `;
 
 export const Fonte2 = styled.div`
@@ -41,6 +79,14 @@ export const Fonte2 = styled.div`
   font-weight: 400;
   line-height: normal;
   margin-left: 40px;
+  @media (max-width: 1300px) {
+    margin-left: calc(40px / 3 * 2);
+    font-size: calc(22px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    margin-left: calc(40 / 6 * 2.8px);
+    font-size: calc(22 / 6 * 2.8px);
+  }
 `;
 export const Fonte3 = styled.div`
   flex-shrink: 0;
@@ -51,8 +97,15 @@ export const Fonte3 = styled.div`
   line-height: normal;
   margin-left: 166px;
   margin-right: 166px;
-  @media (max-width: 600px) {
-    font-size: 12px;
+  @media (max-width: 1300px) {
+    margin-left: calc(166px / 3 * 2);
+    margin-right: calc(166px / 3 * 2);
+    font-size: calc(24px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    margin-left: calc(166 / 6 * 2.8px);
+    margin-right: calc(166 / 6 * 2.8px);
+    font-size: calc(24 / 6 * 2.8px);
   }
 `;
 export const DivGap = styled.div`
@@ -60,29 +113,65 @@ export const DivGap = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 362px;
+  @media (max-width: 1300px) {
+    gap: calc(30px / 3 * 2);
+    width: calc(362px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    gap: calc(30 / 6 * 2.8px);
+    width: calc(362 / 6 * 2.8px);
+  }
 `;
 export const DivGap2 = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media (max-width: 1300px) {
+    gap: calc(20px / 3 * 2);
+    margin-top: calc(30px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    gap: calc(20 / 6 * 2.8px);
+    margin-top: calc(30 / 6 * 2.8px);
+  }
 `;
 export const DivGap3 = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
   padding-top: 70px;
+  @media (max-width: 1300px) {
+    gap: calc(20px / 3 * 2);
+    padding-top: calc(70px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    gap: calc(20 / 6 * 2.8px);
+    padding-top: calc(70 / 6 * 2.8px);
+  }
 `;
 export const DivGap4 = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: 1300px) {
+    gap: calc(30px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    gap: calc(30 / 6 * 2.8px);
+  }
 `;
 export const DivGap5 = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: 1300px) {
+    gap: calc(30px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    gap: calc(30 / 6 * 2.8px);
+  }
 `;
 export const DivFrame = styled.div`
   width: 894px;
@@ -91,8 +180,21 @@ export const DivFrame = styled.div`
   background: #13244d;
   display: flex;
   flex-direction: row;
-  @media (max-width: 894px) {
-    width: 100%;
+  align-items: center;
+  justify-items: center;
+  @media (max-width: 1300px) {
+    width: calc(894px / 3 * 2);
+    height: calc(720px / 3 * 2);
+    border-radius: calc(80px / 3 * 2);
+  }
+  @media (max-width: 613px) {
+    width: 350px;
+    border-radius: calc(80px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    width: calc(894 / 6 * 2.8px);
+    height: calc(720 / 6 * 2.8px);
+    border-radius: calc(80 / 6 * 2.8px);
   }
 `;
 export const Divall = styled.div`
@@ -101,7 +203,13 @@ export const Divall = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  background-color: #72c7f9;
+  @media (max-width: 614.6px) {
+    background-color: #13244d;
+  }
+  @media (max-height: 530px) {
+    background-color: #72c7f9;
+  }
 `;
 export const Botao1 = styled.button`
   padding-top: 50px;
@@ -111,34 +219,84 @@ export const Botao1 = styled.button`
   border-radius: 80px;
   background: #72c7f6;
   border-style: none;
+  @media (max-width: 1300px) {
+    padding-top: calc(50px / 3 * 2);
+    width: calc(436px / 3 * 2);
+    height: calc(56px / 3 * 2);
+    border-radius: calc(80px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    padding-top: calc(50 / 6 * 2.8px);
+    width: calc(436 / 6 * 2.8px);
+    height: calc(56 / 6 * 2.8px);
+    border-radius: calc(80 / 6 * 2.8px);
+  }
 `;
 export const Botao2 = styled.button`
   border-radius: 80px;
-  background: #72c7f6;
+  background: transparent;
   width: 146px;
-  height: 13.1343%;
+  height: 55px;
   flex-shrink: 0;
-  border-style: none;
+  border: 2px solid white;
   margin-left: 340px;
   font-size: 24px;
   font-style: normal;
   line-height: normal;
+  @media (max-width: 1300px) {
+    border-radius: calc(80px / 3 * 2);
+    width: calc(146px / 3 * 2);
+    height: calc(55px / 3 * 2);
+    border: calc(2px / 3 * 2) solid white;
+    margin-left: calc(340px / 3 * 2);
+    font-size: calc(24px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    border-radius: calc(80 / 6 * 2.8px);
+    width: calc(146 / 6 * 2.8px);
+    height: calc(55 / 6 * 2.8px);
+    border: calc(2 / 6 * 2.8px) solid white;
+    margin-left: calc(340 / 6 * 2.8px);
+    font-size: calc(24 / 6 * 2.8px);
+  }
   &:hover {
+    color: black;
+    background-color: #72c7f6;
     cursor: pointer;
   }
 `;
 export const Botao3 = styled.button`
   width: 200px;
-  height: 63.6363%;
+  height: 51px;
   flex-shrink: 0;
   border-radius: 80px;
-  background: #72c7f6;
-  border-style: none;
+  background: transparent;
+  border: 2px solid white;
   margin-left: 166px;
   margin-right: 166px;
   font-size: 22px;
   font-style: normal;
+  @media (max-width: 1300px) {
+    width: calc(200px / 3 * 2);
+    height: calc(51px / 3 * 2);
+    border-radius: calc(80px / 3 * 2);
+    border: calc(2px / 3 * 2) solid white;
+    margin-left: calc(166px / 3 * 2);
+    margin-right: calc(166px / 3 * 2);
+    font-size: calc(22px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    width: calc(200 / 6 * 2.8px);
+    height: calc(51 / 6 * 2.8px);
+    border-radius: calc(80 / 6 * 2.8px);
+    border: calc(2 / 6 * 2.8px) solid white;
+    margin-left: calc(166 / 6 * 2.8px);
+    margin-right: calc(166 / 6 * 2.8px);
+    font-size: calc(21 / 6 * 2.8px);
+  }
   &:hover {
+    color: black;
+    background-color: #72c7f6;
     cursor: pointer;
   }
 `;
@@ -146,4 +304,16 @@ export const Simbolo = styled.img`
   padding-left: 40px;
   height: 40px;
   width: 40px;
+  @media (max-width: 1300px) {
+    padding-left: calc(40px / 3 * 2);
+    height: calc(40px / 3 * 2);
+    width: calc(40px / 3 * 2);
+  }
+  @media (max-height: 530px) {
+    padding-left: calc(40 / 6 * 2.8px);
+    height: calc(40 / 6 * 2.8px);
+    width: calc(40 / 6 * 2.8px);
+  }
 `;
+export const Label = styled.label``;
+export const Form = styled.form``;

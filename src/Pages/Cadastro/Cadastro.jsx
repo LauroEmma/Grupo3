@@ -2,7 +2,6 @@ import {
   DivGap,
   DivGap1,
   DivGap2,
-  DivGap3,
   InputC,
   Input1,
   Botao,
@@ -14,13 +13,47 @@ import {
   Divall,
   Simbolo,
   Doctorimg,
+  Form,
+  Label,
 } from "./Styles";
 import ImagemMedico from "../../Assets/Cadastroimg.png";
 import Cruz from "../../Assets/Cruz.png";
 import { useNavigate } from "react-router-dom";
+import useAuthStore from "../../stores/auth";
+import { useState } from "react";
+import api from "../../services/api";
 
 function Cadastro() {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [senha, setSenha] = useState();
+  const [cargo, setCargo] = useState();
+  const [nome, setNome] = useState();
+  const [confirmarSenha, setConfirmarSenha] = useState();
+  const usuario = useAuthStore((state) => state.usuario);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
+    }
+    try {
+      const res = await api.post("/usuario", {
+        email,
+        senha,
+        cargo,
+        nome,
+      });
+
+      Navigate("/login");
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
+  };
+
   return (
     <Divall>
       <DivFrame>
@@ -34,17 +67,61 @@ function Cadastro() {
             Faça já seu cadastro e descubra novas formas de manejar seu{" "}
             <span> tempo de trabalho </span>{" "}
           </Fonte3>
-          <Input1 type="email" placeholder="E-mail"></Input1>
-          <Input1 type="password" placeholder="Senha"></Input1>
-          <Input1 type="password" placeholder="Confirmar senha"></Input1>
-          <DivGap2>
-            <InputC placeholder="Cpf"></InputC>
-            <Fonte1> Já possui login? </Fonte1>
-          </DivGap2>
-          <DivGap2>
-            <Botao> Cadastrar </Botao>
-            <Botao onClick={() => navigate("/login")}> Logue aqui!!!</Botao>
-          </DivGap2>
+          <Form onSubmit={handleSubmit}>
+            <Label htmlFor="email"></Label>
+            <Input1
+              type="email"
+              placeholder="E-mail"
+              id="email"
+              name="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            ></Input1>
+
+            <Label htmlFor="senha"></Label>
+            <Input1
+              type="password"
+              placeholder="Senha"
+              id="senha"
+              name="senha"
+              required
+              onChange={(e) => setSenha(e.target.value)}
+            ></Input1>
+
+            <Label htmlFor="senha"></Label>
+            <Input1
+              type="password"
+              placeholder="Confirmar senha"
+              onChange={(e) => setConfirmarSenha(e.target.value)}
+            ></Input1>
+
+            <Label htmlFor="cargo"></Label>
+            <Input1
+              type="text"
+              placeholder="cargo"
+              id="cargo"
+              name="cargo"
+              required
+              onChange={(e) => setCargo(e.target.value)}
+            ></Input1>
+
+            <Label htmlFor="nome"></Label>
+            <Input1
+              type="text"
+              placeholder="Nome"
+              id="nome"
+              name="nome"
+              required
+              onChange={(e) => setNome(e.target.value)}
+            ></Input1>
+            <DivGap2>
+              <Fonte1> Já possui login? </Fonte1>
+            </DivGap2>
+            <DivGap2>
+              <Botao type="submit"> Cadastrar </Botao>
+              <Botao onClick={() => Navigate("/login")}> Logue aqui!!!</Botao>
+            </DivGap2>
+          </Form>
         </DivGap>
         <Divimg>
           {" "}
