@@ -1,254 +1,299 @@
 import styled from "styled-components";
 
-export const Divall = styled.div`
+export const DivGeral = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const DivBase = styled.div`
+  width: 48%;
+  height: 49%;
+  margin-bottom: 15%;
+  background-color: #021c35;
+  display: flex;
+  border-radius: 80px;
+
+  @media (max-width: 900px) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0%;
+    margin-top: 12%;
     width: 100%;
-    height: 100vh;
-    background-color: #13244D;
-    display: flex;
-    flex-direction: column;
-`
-export const Div1 = styled.div`
-    height: 43%;
+    height: 100%;
+  }
+`;
+
+export const DivDaImagem = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 58%;
+
+  @media (max-width: 900px) {
+    width: 0%;
+  }
+`;
+
+export const ImgHipocrates = styled.img`
+  height: 100%;
+  border-radius: 80px;
+`;
+
+export const DivDireita = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 42%;
+  border-radius: 80px;
+  background-color: #021c35;
+  align-items: center;
+  @media (max-width: 900px) {
     width: 100%;
-    display: flex;
-    flex-direction: row;
+  }
+`;
+
+export const DivUsuario = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 15%;
+  margin-right: 12%;
+  margin-top: 19%;
+  background-color: #006fa2;
+  border-radius: 60px;
+
+  @media (max-width: 900px) {
+    height: 10%;
+    border-radius: 0;
+    align-items: center;
     border-bottom: solid;
-    color: #72C7F6;
-`
-export const Div2 = styled.div`
-    height: 100%;
-    width: 28%;
-    border-right: solid;
+    border-color: #006fa2;
+    margin-right: 0%;
+    text-align: left;
+    margin-top: 0;
+  }
 
-`
-export const Div3 = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-`
-export const Div4 = styled.div`
-    height: 100%;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    gap: 15%;
-`
-export const Div5 = styled.div`
-    height: 100%;
-    width: 10%;
+  @media (max-width: 750px) {
+    height: 9%;
+  }
 
-`
-export const Div6 = styled.div`
-    height: 100%;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    
-`
-export const Div7 = styled.div`
-    height: 50%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    
-`
-export const Div8 = styled.div`
-    height: 113.5%;
-    width: 21.85%;
-    display: flex;
-    flex-direction: row;
-    border-right: solid;
-    color: #72C7F6;
-`
-export const Div9 = styled.div`
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-`
-export const Div10 = styled.div`
-    height: 20%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-`
-export const Div11 = styled.div`
-    height: 100%;
-    width: 78%;
-    display: flex;
-    flex-direction: column;
-    
-`
-export const Div12 = styled.div`
-    width: 100%;
-    height: 20%;
-
-`
-export const Div13 = styled.div`
-    width: 100%;
-    height: 80%;
-
-`
-export const Fonte1 = styled.div`
-    color: #FFF;
-    font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    width: 60%;
-    height: 40px;
-    flex-shrink: 0; 
-    margin-top: 8%;
-    padding-left: 5%;
-`
-export const Fonte2 = styled.div`
-    color: #FFF;
-    font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    width: 60%;
-    height: 40px;
-    flex-shrink: 0; 
-    padding-left: 5%;
-
-`
-export const Fonte3 = styled.div`
-    color: #FFF;
-    font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    width: 60%;
-    height: 40px;
-    flex-shrink: 0; 
-    padding-left: 5%;
-    
-`
-export const Fonte4 = styled.div`
+  @media (max-width: 500px) {
     height: 7%;
-    font-size: 24px;
-    color: white;
-    margin-top: 15%;
-    display: flex;
-    align-self: center;
-`
-export const Fonte5 = styled.div`
-    color: #FFF;
-    font-family: Inter;
-    font-size: 29px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    padding-left: 20%;
-    padding-top: 4%;
-    width: 70%;
-`
-export const Fonte6 = styled.div`
-    color: #FFF;
-    font-family: Inter;
-    font-size: 26px;
-    padding-left: 20%;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    height: 40%;
-    padding-right: 15%;
-`
-export const Fonte7 = styled.div`
-    color: #FFF;
-    font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    margin-top: 3%;
-    padding-left: 3.5%;
-`
-export const Fonte8 = styled.div`
-    margin-left: 2.2%;
-    margin-top: 1%;
-    height: 90%;
-    width: 95%;
-    color: white;
-    font-size: 30px;
-`
-export const Botao1 = styled.button`
-    background-color: #72C7F6;
-    height: 30%;
-    width: 70%;
-    border-radius: 80px;
-    justify-self: center;
-    margin-left: 15.2%;
-    border-style: none;
-    font-size: 50px;
-    &:hover {
-        cursor: pointer;
-    }
-`
-export const Botao2 = styled.button`
-    background-color: #72C7F6;
-    height: 30%;
-    width: 69%;
-    border-radius: 70px;
-    justify-self: center;
-    margin-left: 16%;
-    border-style: none;
-    font-size: 40px;
-    margin-bottom: 10%;
-    &:hover {
-        cursor: pointer;
-    }
-`
-export const BotaoTimer = styled.button`
-    background-color: #72C7F6;
-    width: 227.038px;
-    height: 87.306px;
-    flex-shrink: 0; 
-    border-radius: 80px;
-    color: black;    
-    font-family: Inter;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
-    border-style: none;
-`
-export const ImgMedica = styled.img`
-    height: 70%;
-    width: 70%;
-    margin-top: 15%;
-    margin-left: 15%;
-`
-export const ImgRelogio = styled.img`
-    height: 25%;
-    width: 50%;
-    margin-top: 50%;
-    margin-left: 50%;
-    padding-left: 50%;
-`
-export const ImgAcerto = styled.img`
-    height: 70%;
-    width: 20%;
-    
-    padding-top: 2%;
-`
-export const TimerDiv = styled.div`
-    height: 30%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-`
-export const Retangulo = styled.div`
-    width: 80%;
-    height: 80%;
-    border: solid 2px;
-    border-color: #72C7F6;
-    border-radius: 20px; 
-    margin-left: 9%;
-    margin-top: 3%;
+  }
 
-`
+  @media (max-width: 350px) {
+    height: 6%;
+  }
+`;
+
+export const DivNome = styled.div`
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 175%;
+  font-style: normal;
+  font-weight: 550;
+  padding-top: 5%;
+  text-align: center;
+  padding-bottom: 2%;
+  width: 100%;
+
+  @media (max-width: 1300px) {
+    font-size: 140%;
+    padding-left: 0;
+    padding: 2%;
+    margin-right: 10%;
+  }
+  @media (max-width: 1100px) {
+    font-size: 120%;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 150%;
+    padding-top: 5%;
+  }
+`;
+
+export const DivCargo = styled.div`
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 110%;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  padding-top: 4%;
+  padding-left: 8%;
+  padding-bottom: 1%;
+
+  @media (max-width: 1300px) {
+    font-size: 100%;
+    margin-right: 0;
+  }
+  @media (max-width: 1100px) {
+    font-size: 90%;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 100%;
+  }
+  @media (max-width: 400px) {
+    padding-left: 12%;
+  }
+`;
+
+export const DivEmail = styled.div`
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 110%;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  padding-top: 4%;
+  padding-left: 8%;
+  padding-bottom: 1%;
+
+  @media (max-width: 1300px) {
+    font-size: 100%;
+    margin-right: 0;
+    padding-top: 1%;
+  }
+  @media (max-width: 1100px) {
+    font-size: 90%;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 100%;
+  }
+  @media (max-width: 400px) {
+    padding-left: 12%;
+  }
+`;
+
+export const DivInfAdic = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 20%;
+  margin-right: 12%;
+  margin-top: 4%;
+  background-color: #006fa2;
+  border-radius: 60px;
+
+  @media (max-width: 900px) {
+    border-radius: 0;
+    margin-right: 0;
+    height: 13%;
+  }
+`;
+
+export const DivInfo = styled.div`
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 110%;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  padding-top: 4%;
+  padding-left: 8%;
+  padding-bottom: 1%;
+
+  @media (max-width: 1300px) {
+    font-size: 100%;
+    margin-right: 0;
+  }
+  @media (max-width: 1100px) {
+    font-size: 90%;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 100%;
+  }
+  @media (max-width: 400px) {
+    padding-left: 12%;
+  }
+`;
+
+export const DivInfoTexto = styled.div`
+  flex-shrink: 0;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 100%;
+  font-style: normal;
+  text-align: left;
+  padding-left: 8%;
+  padding-bottom: 3%;
+
+  @media (max-width: 1300px) {
+    font-size: 100%;
+  }
+  @media (max-width: 1100px) {
+    font-size: 90%;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 80%;
+  }
+  @media (max-width: 400px) {
+    padding-left: 12%;
+  }
+`;
+
+export const DivBotao = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  height: 10%;
+  margin-right: 60%;
+  margin-top: 4%;
+
+  @media (max-width: 900px) {
+    margin-left: 12%;
+  }
+`;
+
+export const BotaoSair = styled.button`
+  margin-top: 4%;
+  margin-right: 12%;
+  width: 100%;
+  height: 120%;
+  border-radius: 80px;
+  font-size: 22px;
+  background-color: #006fa2;
+  color: white;
+  flex-shrink: 0;
+  border-style: none;
+  font-size: 100%;
+
+  @media (max-width: 1300px) {
+    font-size: 80%;
+    height: 80%;
+  }
+  @media (max-width: 1100px) {
+    font-size: 70%;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 80%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: transparent;
+  }
+`;
+
+export const Inputmodal = styled.input`
+  color: #000;
+  width: 324px;
+  height: 15px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  background: #67b9e7;
+  flex-shrink: 0;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
