@@ -1,6 +1,5 @@
-import React from "react";
 import { Modalbackground, ModalInterior, BotaoConfirma } from "./styles";
-import { AiOutlineClose } from "react-icons/Ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function Modal({ isOpen, setModalOpen, children, onConfirm }) {
   if (isOpen) {
