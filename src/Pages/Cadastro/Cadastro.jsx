@@ -1,4 +1,4 @@
-import { DivGap, DivGap1, DivGap2, InputC, Input1, Botao, DivFrame, Fonte1, Fonte2, Fonte3, Divimg, Divall, Simbolo, Doctorimg} from "./Styles";
+import { DivGap, DivGap1, DivGap2, InputC, Input1, Botao, DivFrame, Fonte1, Fonte2, Fonte3, Fonte4, Divimg, Divall, Simbolo, Doctorimg, DivCheckbox, InputCheckbox} from "./Styles";
 import ImagemMedico from "../../Assets/Cadastroimg.png"; 
 import Cruz from "../../Assets/Cruz.png";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +17,14 @@ function Cadastro(){
                     <Fonte3> Faça já seu cadastro e descubra novas formas de manejar seu <span> tempo de trabalho </span> </Fonte3>
                     <Input1  placeholder="Nome"></Input1>
                     <Input1  placeholder="Cargo"></Input1>
+
                     <Input1 type="email" placeholder="E-mail"></Input1>
                     <Input1 type="password" placeholder="Senha"></Input1>
                     <Input1 type="password" placeholder="Confirmar senha"></Input1>
+                    <DivCheckbox>
+                        <Fonte4> Médico de Plantão </Fonte4>
+                        <InputCheckbox type="checkbox"></InputCheckbox>
+                    </DivCheckbox>
                         <DivGap2>
                             <Fonte1> Já possui login? </Fonte1>  
                         </DivGap2>
