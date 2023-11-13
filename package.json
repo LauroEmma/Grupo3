@@ -11,12 +11,15 @@
   },
   "dependencies": {
     "antd": "^5.10.2",
+    "axios": "^1.6.1",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-responsive-carousel": "^3.2.23",
     "react-icons": "^4.11.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.17.0",
-    "styled-components": "^6.1.0"
+    "styled-components": "^6.1.0",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

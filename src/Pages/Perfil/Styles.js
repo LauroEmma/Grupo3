@@ -297,3 +297,5 @@ export const Inputmodal = styled.input`
   font-weight: 400;
   line-height: normal;
 `;
+export const Form = styled.form``;
+export const Label = styled.label``;

@@ -10,6 +10,7 @@ export const Container = styled.div`
   border-radius: 0px, 40px, 40px, 0px;
   left: ${(props) => (props.sidebar ? 0 : "-100%")};
   animation: showSiderbar 0.4s;
+  z-index: 2;
 
   > svg {
     position: fixed;

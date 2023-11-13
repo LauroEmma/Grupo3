@@ -1,7 +1,13 @@
 import { Modalbackground, ModalInterior, BotaoConfirma } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Modal({ isOpen, setModalOpen, children, onConfirm }) {
+export default function Modal({
+  isOpen,
+  setModalOpen,
+  children,
+  onConfirm,
+  onSubmit,
+}) {
   if (isOpen) {
     return (
       <Modalbackground>
@@ -10,9 +16,12 @@ export default function Modal({ isOpen, setModalOpen, children, onConfirm }) {
 
           {children}
           <BotaoConfirma
-            onClick={() => {
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
               onConfirm();
               setModalOpen();
+              onSubmit(e);
             }}
           >
             Confirmar
