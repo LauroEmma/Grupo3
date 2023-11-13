@@ -25,7 +25,6 @@ import useAuthStore from "../../stores/auth";
 import api from "../../services/api";
 
 function Perfil() {
-  const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const clearAuth = useAuthStore((state) => state.clearAuth);
   const usuario = useAuthStore((state) => state.usuario);
@@ -37,11 +36,7 @@ function Perfil() {
   );
   const [cargo, setCargo] = useState(usuario.cargo);
   const [nome, setNome] = useState(usuario?.nome);
-  const handleConfirm = (e) => {
-    e.preventDefault();
 
-    alert("Confirmado");
-  };
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -51,7 +46,6 @@ function Perfil() {
         nome,
         info_adicionais,
       });
-      console.log(res.data);
       setUsuario(res.data);
     } catch (erro) {
       console.error(erro);
@@ -85,7 +79,7 @@ function Perfil() {
               <Modal
                 isOpen={openModal}
                 setModalOpen={() => setOpenModal(!openModal)}
-                onConfirm={handleConfirm}
+                confirm={handleUpdate}
               >
                 <p> Insira os dados que quer alterar</p>
                 <p>Novo nome</p>
