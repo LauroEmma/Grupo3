@@ -23,6 +23,14 @@ function RotasPrivadas() {
 
   return <Navigate to="/login" replace />;
 }
+function RotaPlantao() {
+  const usuario = useAuthStore((state) => state.usuario);
+
+  if (location.pathname == "/plantao" && usuario.plantao == false)
+    return <Navigate to="/" replace />;
+
+  return <Outlet />;
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,7 +39,9 @@ const router = createBrowserRouter(
         <Route element={<RotasPrivadas />}>
           <Route index element={<Home />} />
           <Route path="perfil" element={<Perfil />} />
-          <Route path="plantao" element={<Plantao />} />
+          <Route element={<RotaPlantao />}>
+            <Route path="plantao" element={<Plantao />} />
+          </Route>
         </Route>
       </Route>
       <Route path="login" element={<Login />} />

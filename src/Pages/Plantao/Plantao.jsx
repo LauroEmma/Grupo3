@@ -3,7 +3,6 @@ import {
   Tabela1,
   BotaoPlantao,
   Inputmodal,
-  //Informaçoesextras,
   Linha,
   LinhaTabela,
   BotaoSaida,
@@ -19,12 +18,11 @@ function Plantao() {
   const [cargo, setCargo] = useState("");
   const [hospital, setHospital] = useState("");
   const usuario = useAuthStore((state) => state.usuario);
+  const idUsuario = useAuthStore((state) => state.usuario?._id);
   const [tableData, setTableData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const handleConfirm = () => {
-    alert("Confirmado");
-  };
-
+  const setUsuario = useAuthStore((state) => state.setUsuario);
+  const [nome, setNome] = useState(usuario?.nome);
   const columns = [
     {
       title: "Médicos em plantão",
@@ -70,6 +68,23 @@ function Plantao() {
   ];
   const handleDisconnect = (key) => {
     alert(`desconectou a linha tal = ${key}`);
+    try {
+      const destroy = api.delete(`/plantao/${usuario.id}`);
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao deletar esse plantao");
+    }
+  };
+
+  const fetchPlantaoData = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.get("/plantao");
+      setTableData(response.data);
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao obter dados do plantão");
+    }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,18 +95,8 @@ function Plantao() {
         hospital,
         cargo,
       });
-
-      const newPlantao = {
-        key: res.data.id,
-        name: usuario.nome,
-        Hospital: hospital,
-        Cargo: cargo,
-        Chegada: "20h",
-        Tempo_Decorrido: "10m",
-      };
-
-      setTableData([...tableData, newPlantao]);
-      setHospital("");
+      setTableData([...tableData, res.data]);
+      setUsuario(res.data);
     } catch (erro) {
       console.error(erro);
       alert(erro.response.data.message);
@@ -109,8 +114,7 @@ function Plantao() {
         <Modal
           isOpen={openModal}
           setModalOpen={() => setOpenModal(!openModal)}
-          onConfirm={handleConfirm}
-          onSubmit={handleSubmit}
+          confirm={handleSubmit}
         >
           <p> Confirmação De Plantão</p>
           <p> Em qual hospital você atuará?</p>

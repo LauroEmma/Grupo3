@@ -15,6 +15,9 @@ import {
   Doctorimg,
   Form,
   Label,
+  DivCheckbox,
+  InputCheckbox,
+  Fonte4,
 } from "./Styles";
 import ImagemMedico from "../../Assets/Cadastroimg.png";
 import Cruz from "../../Assets/Cruz.png";
@@ -30,8 +33,7 @@ function Cadastro() {
   const [cargo, setCargo] = useState();
   const [nome, setNome] = useState();
   const [confirmarSenha, setConfirmarSenha] = useState();
-  const usuario = useAuthStore((state) => state.usuario);
-
+  const [usuario, setUsuario] = useState({ plantao: false });
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,6 +47,7 @@ function Cadastro() {
         senha,
         cargo,
         nome,
+        plantao: usuario.plantao,
       });
 
       Navigate("/login");
@@ -52,6 +55,12 @@ function Cadastro() {
       console.error(erro);
       alert(erro.response.data.message);
     }
+  };
+  const func_plantao = () => {
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      plantao: !prevUsuario.plantao,
+    }));
   };
 
   return (
@@ -114,6 +123,14 @@ function Cadastro() {
               required
               onChange={(e) => setNome(e.target.value)}
             ></Input1>
+            <DivCheckbox>
+              <Fonte4> Médico de Plantão </Fonte4>
+              <InputCheckbox
+                type="checkbox"
+                onChange={func_plantao}
+                id="myCheckbox"
+              ></InputCheckbox>
+            </DivCheckbox>
             <DivGap2>
               <Fonte1> Já possui login? </Fonte1>
             </DivGap2>
