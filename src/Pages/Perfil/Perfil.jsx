@@ -52,6 +52,20 @@ function Perfil() {
       alert(erro.response.data.message);
     }
   };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.put(`/usuario/${usuario.id}`, {
+        email,
+        cargo,
+        nome,
+        info_adicionais,
+      });
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
+  };
   return (
     <DivGeral>
       <DivBase>

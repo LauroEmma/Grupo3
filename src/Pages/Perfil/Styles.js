@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ImagemFundo from "../../Assets/ImgFundoPerfil.png";
 
 export const DivGeral = styled.div`
   width: 100%;
@@ -8,12 +9,15 @@ export const DivGeral = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-image: url(${ImagemFundo});
+  background-size: 100%;
 `;
 
 export const DivBase = styled.div`
-  width: 48%;
-  height: 49%;
+  width: 65%;
+  height: 70%;
   margin-bottom: 15%;
+  margin-top: 100px;
   background-color: #021c35;
   display: flex;
   border-radius: 80px;
@@ -21,7 +25,6 @@ export const DivBase = styled.div`
   @media (max-width: 900px) {
     border-top-left-radius: 0;
     border-top-right-radius: 0%;
-    margin-top: 12%;
     width: 100%;
     height: 100%;
   }
