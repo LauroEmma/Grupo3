@@ -9,7 +9,7 @@ import {
   Form,
   Label,
 } from "./Styles";
-import Modal from "../../components/Modal";
+import Modal from "../../Components/Modal/Modal";
 import { useState } from "react";
 import useAuthStore from "../../stores/auth";
 import api from "../../services/api";
