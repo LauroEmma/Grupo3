@@ -29,24 +29,24 @@ function Perfil() {
   const [openModal, setOpenModal] = useState(false);
   const clearAuth = useAuthStore((state) => state.clearAuth);
   const usuario = useAuthStore((state) => state.usuario);
-  const [email, setEmail] = useState("");
-  const [info_adicionais, setInfo_adicionais] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [nome, setNome] = useState("");
-  const handleConfirm = () => {
-    e.preventDefault();
-
-    alert("Confirmado");
-  };
+  const idUsuario = useAuthStore((state) => state.usuario?._id);
+  const setUsuario = useAuthStore((state) => state.setUsuario);
+  const [email, setEmail] = useState(usuario?.email);
+  const [info_adicionais, setInfo_adicionais] = useState(
+    usuario?.info_adicionais
+  );
+  const [cargo, setCargo] = useState(usuario.cargo);
+  const [nome, setNome] = useState(usuario?.nome);
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.put(`/usuario/${usuario.id}`, {
+      const res = await api.put(`/usuario/${idUsuario}`, {
         email,
         cargo,
         nome,
         info_adicionais,
       });
+      setUsuario(res.data);
     } catch (erro) {
       console.error(erro);
       alert(erro.response.data.message);
@@ -79,8 +79,7 @@ function Perfil() {
               <Modal
                 isOpen={openModal}
                 setModalOpen={() => setOpenModal(!openModal)}
-                onConfirm={handleConfirm}
-                onSubmit={handleUpdate}
+                confirm={handleUpdate}
               >
                 <p> Insira os dados que quer alterar</p>
                 <p>Novo nome</p>
@@ -91,6 +90,7 @@ function Perfil() {
                   name="nome"
                   onChange={(e) => setNome(e.target.value)}
                   placeholder={usuario.nome}
+                  value={nome}
                 ></Inputmodal>
                 <p>Novo cargo</p>
                 <Label htmlFor="cargo"> </Label>
@@ -100,6 +100,7 @@ function Perfil() {
                   name="cargo"
                   onChange={(e) => setCargo(e.target.value)}
                   placeholder={usuario.cargo}
+                  value={cargo}
                 ></Inputmodal>
                 <p>Novo email</p>
                 <Label htmlFor="email"> </Label>
@@ -109,6 +110,7 @@ function Perfil() {
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={usuario.email}
+                  value={email}
                 ></Inputmodal>
                 <p>Informações adicionais</p>
                 <Label htmlFor="info_adicionais"> </Label>
@@ -118,6 +120,7 @@ function Perfil() {
                   name="info_adicionais"
                   onChange={(e) => setInfo_adicionais(e.target.value)}
                   placeholder={usuario.info_adicionais}
+                  value={info_adicionais}
                 ></Inputmodal>
               </Modal>
             </Form>
