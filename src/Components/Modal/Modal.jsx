@@ -1,10 +1,10 @@
 import { Modalbackground, ModalInterior, BotaoConfirma } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Modal({ isOpen, setModalOpen, children, confirm }) {
+export default function Modal({ isOpen, setModalOpen, children, onSubmit }) {
   if (isOpen) {
     const handleConfirm = () => {
-      confirm();
+      onSubmit();
       setTimeout(() => {
         setModalOpen();
       }, 10);

@@ -12,7 +12,6 @@ const Sidebar = ({ active }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const usuario = useAuthStore((state) => state.usuario);
-  const usuarioAtualizado = usuario || { plantao: false };
 
   const closeSidebar = () => {
     active(false);
@@ -26,22 +25,18 @@ const Sidebar = ({ active }) => {
             Icon={FaHome}
             Text="Home"
             onClick={() => (
-              navigate("/"),
-              closeSidebar(),
-              console.log(usuarioAtualizado.plantao)
+              navigate("/"), closeSidebar(), console.log(usuario)
             )}
           />
         )}
-
-        {location.pathname !== "/plantao" &&
-          usuarioAtualizado.plantao !== false && (
-            <SidebarItem
-              Icon={FaMedkit}
-              Text="Plantão"
-              onClick={() => (navigate("/plantao"), closeSidebar())}
-            />
-          )}
-
+        {location.pathname !== "/plantao" && usuario.plantao !== false && (
+          <SidebarItem
+            Icon={FaMedkit}
+            Text="Plantão"
+            onClick={() => (navigate("/plantao"), closeSidebar())}
+          />
+        )}
+        ;
         {location.pathname !== "/perfil" && (
           <SidebarItem
             Icon={FaUserAlt}

@@ -26,7 +26,7 @@ function RotasPrivadas() {
 function RotaPlantao() {
   const usuario = useAuthStore((state) => state.usuario);
 
-  if (location.pathname == "/plantao" && usuario.plantao == false)
+  if (location.pathname == "/Plantao" && usuario.plantao == false)
     return <Navigate to="/" replace />;
 
   return <Outlet />;

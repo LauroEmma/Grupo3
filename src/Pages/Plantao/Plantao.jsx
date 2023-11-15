@@ -10,138 +10,166 @@ import {
   Label,
 } from "./Styles";
 import Modal from "../../components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuthStore from "../../stores/auth";
 import api from "../../services/api";
+import moment from "moment";
 
 function Plantao() {
   const [cargo, setCargo] = useState("");
   const [hospital, setHospital] = useState("");
-  const usuario = useAuthStore((state) => state.usuario);
   const idUsuario = useAuthStore((state) => state.usuario?._id);
-  const [tableData, setTableData] = useState([]);
+  const [plantoes, setPlantoes] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const setUsuario = useAuthStore((state) => state.setUsuario);
-  const [nome, setNome] = useState(usuario?.nome);
-  const columns = [
-    {
-      title: "Médicos em plantão",
-      dataIndex: "name",
-      key: "Médicos em plantão",
-      width: 100,
-    },
-    {
-      title: "Hospital",
-      dataIndex: "Hospital",
-      key: "Hospital",
-      width: 100,
-    },
+  const [dadosTabela, setDadosTabela] = useState([]);
+  const [ativa, setAtiva] = useState(false);
 
-    {
-      title: "Cargo",
-      dataIndex: "Cargo",
-      key: "Cargo",
-      width: 100,
-    },
-    {
-      title: "Chegada",
-      dataIndex: "Chegada",
-      key: "Chegada",
-      width: 100,
-    },
-    {
-      title: "Tempo decorrido",
-      dataIndex: "Tempo_Decorrido",
-      key: "Tempo decorrido",
-      width: 100,
-    },
-    {
-      title: "Desconectar",
-      key: "Action",
-      render: (text, record) => (
-        <BotaoSaida onClick={() => handleDisconnect(record.key)}>
-          Deslogar
-        </BotaoSaida>
-      ),
-      width: 70,
-    },
-  ];
-  const handleDisconnect = (key) => {
-    alert(`desconectou a linha tal = ${key}`);
-    try {
-      const destroy = api.delete(`/plantao/${usuario.id}`);
-    } catch (error) {
-      console.error(error);
-      alert("Erro ao deletar esse plantao");
-    }
-  };
-
-  const fetchPlantaoData = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await api.get("/plantao");
-      setTableData(response.data);
-    } catch (error) {
-      console.error(error);
-      alert("Erro ao obter dados do plantão");
-    }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     try {
       const res = await api.post("/plantao", {
-        id_usuario: usuario.id,
-        hospital,
-        cargo,
+        id_usuario: idUsuario,
+        hospital: hospital,
+        cargo: cargo,
       });
-      setTableData([...tableData, res.data]);
-      setUsuario(res.data);
+
+      getPlantoes();
+      setHospital("");
+      setCargo("");
     } catch (erro) {
       console.error(erro);
       alert(erro.response.data.message);
     }
   };
 
+  const getPlantoes = async () => {
+    try {
+      const res = await api.get("/plantao");
+      setPlantoes(res.data);
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
+  };
+  useEffect(() => {
+    getPlantoes();
+  }, []);
+
+  const verificarPlantoes = () => {
+    const temPlantao = plantoes.find(
+      (plantao) => plantao.id_usuario?._id === idUsuario
+    );
+    setAtiva(!!temPlantao);
+    mapearPlantoes();
+  };
+  useEffect(() => {
+    verificarPlantoes();
+  }, [plantoes]);
+
+  function mapearPlantoes() {
+    const resultadoMapeamento = plantoes.map((plantao) => {
+      console.log(plantao);
+      const chegada = moment(plantao.createdAt);
+      const agora = moment();
+      const calc = agora.diff(chegada, "minutes");
+      const horas = Math.floor(calc / 60);
+      const minutos = calc % 60;
+
+      return {
+        nome: plantao.id_usuario?.nome,
+        hospital: plantao.hospital,
+        cargo: plantao.cargo,
+        chegada: chegada.format("DD/MM H:mm"),
+        tempo_decorrido: `${horas}:${minutos}`,
+        key: plantao._id,
+      };
+    });
+
+    setDadosTabela(resultadoMapeamento);
+  }
+
+  const deletePlantao = async () => {
+    try {
+      const res = await api.delete(`/plantao/${idUsuario}`);
+      getPlantoes();
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
+  };
+  const columns = [
+    {
+      title: "Médicos em plantão",
+      dataIndex: "nome",
+      key: "Médicos em plantão",
+      width: 100,
+    },
+    {
+      title: "Hospital",
+      dataIndex: "hospital",
+      key: "Hospital",
+      width: 100,
+    },
+
+    {
+      title: "Cargo",
+      dataIndex: "cargo",
+      key: "Cargo",
+      width: 100,
+    },
+    {
+      title: "Chegada",
+      dataIndex: "chegada",
+      key: "Chegada",
+      width: 100,
+    },
+    {
+      title: "Tempo decorrido",
+      dataIndex: "tempo_decorrido",
+      key: "Tempo decorrido",
+      width: 100,
+    },
+  ];
   return (
     <DivBackground>
       <Linha>
-        <BotaoPlantao onClick={() => setOpenModal(true)}>
-          Iniciar Plantão
-        </BotaoPlantao>
+        {!ativa ? (
+          <BotaoPlantao onClick={() => setOpenModal(true)}>
+            Iniciar Plantao
+          </BotaoPlantao>
+        ) : (
+          <BotaoPlantao onClick={deletePlantao}>Deslogar </BotaoPlantao>
+        )}
       </Linha>
-      <Form onSubmit={handleSubmit}>
-        <Modal
-          isOpen={openModal}
-          setModalOpen={() => setOpenModal(!openModal)}
-          confirm={handleSubmit}
-        >
-          <p> Confirmação De Plantão</p>
-          <p> Em qual hospital você atuará?</p>
-          <Label htmlFor="hospital"> </Label>
-          <Inputmodal
-            type="text"
-            id="hospital"
-            name="hospital"
-            required
-            value={hospital}
-            onChange={(e) => setHospital(e.target.value)}
-          />
-          <p>Qual seu cargo nesse hospital?</p>
-          <Label htmlFor="cargo"> </Label>
-          <Inputmodal
-            type="text"
-            id="cargo"
-            name="cargo"
-            required
-            value={cargo}
-            onChange={(e) => setCargo(e.target.value)}
-          />
-        </Modal>
-      </Form>
+      <Modal
+        isOpen={openModal}
+        setModalOpen={() => setOpenModal(!openModal)}
+        onSubmit={handleSubmit}
+      >
+        <p> Confirmação De Plantão</p>
+        <p> Em qual hospital você atuará?</p>
+        <Label htmlFor="hospital"> </Label>
+        <Inputmodal
+          type="text"
+          id="hospital"
+          name="hospital"
+          required
+          value={hospital}
+          onChange={(e) => setHospital(e.target.value)}
+        />
+        <p>Qual seu cargo nesse hospital?</p>
+        <Label htmlFor="cargo"> </Label>
+        <Inputmodal
+          type="text"
+          id="cargo"
+          name="cargo"
+          required
+          value={cargo}
+          onChange={(e) => setCargo(e.target.value)}
+        />
+      </Modal>
       <LinhaTabela>
         <Tabela1
-          dataSource={tableData}
+          dataSource={dadosTabela}
           columns={columns}
           pagination={false}
           scroll={{ x: 150, y: 525 }}

@@ -13,48 +13,91 @@ import {
   Label,
 } from "./Styles";
 import Modal from "../../components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuthStore from "../../stores/auth";
 import api from "../../services/api";
+import moment from "moment/moment";
 
 function Home() {
   const [cargo, setCargo] = useState("");
   const [hospital, setHospital] = useState("");
-  const usuario = useAuthStore((state) => state.usuario);
-  const [tableData, setTableData] = useState([]);
+  const [atividades, setAtividades] = useState([]);
+  const idUsuario = useAuthStore((state) => state?.usuario?._id);
   const [openModal, setOpenModal] = useState(false);
-  const handleConfirm = () => {
-    alert("Confirmado");
-  };
+  const [dadosTabela, setDadosTabela] = useState([]);
+  const [ativa, setAtiva] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     try {
       const res = await api.post("/atividade", {
-        id_usuario: usuario.id,
-        hospital,
-        cargo,
+        id_usuario: idUsuario,
+        hospital: hospital,
+        cargo: cargo,
       });
 
-      const newSessao = {
-        key: res.data.id, // Use a chave única do plantão (pode ser o ID retornado pela API)
-        name: usuario.nome,
-        Hospital: hospital,
-        Cargo: cargo,
-        Chegada: "20h",
-        Tempo_Decorrido: "10m",
-      };
-
-      setTableData([...tableData, newSessao]);
-      setHospital(""); // Limpar o estado após adicionar à tabela
-      setCargo(""); // Limpar o estado após adicionar à tabela
+      getAtividades();
+      setHospital("");
+      setCargo("");
     } catch (erro) {
       console.error(erro);
       alert(erro.response.data.message);
     }
   };
+  const getAtividades = async () => {
+    try {
+      const res = await api.get("/atividade");
+      setAtividades(res.data);
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
+  };
+  useEffect(() => {
+    getAtividades();
+  }, []);
 
+  const verificarAtividade = () => {
+    const temAtividade = atividades.find(
+      (atividade) => atividade?.id_usuario?._id === idUsuario
+    );
+    setAtiva(!!temAtividade);
+    mapearAtividade();
+  };
+  useEffect(() => {
+    verificarAtividade();
+  }, [atividades]);
+
+  function mapearAtividade() {
+    const resultadoMapeamento = atividades.map((atividade) => {
+      console.log(atividade);
+      const chegada = moment(atividade.createdAt);
+      const agora = moment();
+      const calc = agora.diff(chegada, "minutes");
+      const horas = Math.floor(calc / 60);
+      const minutos = calc % 60;
+
+      return {
+        nome: atividade?.id_usuario?.nome,
+        hospital: atividade?.hospital,
+        cargo: atividade?.cargo,
+        chegada: chegada.format("DD/MM H:mm"),
+        tempo_decorrido: `${horas}:${minutos}`,
+        key: atividade?._id,
+      };
+    });
+
+    setDadosTabela(resultadoMapeamento);
+  }
+
+  const deleteAtividade = async () => {
+    try {
+      const res = await api.delete(`/atividade/${idUsuario}`);
+      getAtividades();
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.response.data.message);
+    }
+  };
   const images = [
     {
       author: "Lauro Emmanuel",
@@ -73,6 +116,39 @@ function Home() {
       download_url: "https://i.ibb.co/H4fwRDP/eventos-mes.jpg",
     },
   ];
+  const atividadeColumns = [
+    {
+      title: "Médicos em plantão",
+      dataIndex: "nome",
+      key: "Médicos em plantão",
+      width: 100,
+    },
+    {
+      title: "Hospital",
+      dataIndex: "hospital",
+      key: "Hospital",
+      width: 100,
+    },
+
+    {
+      title: "Cargo",
+      dataIndex: "cargo",
+      key: "Cargo",
+      width: 100,
+    },
+    {
+      title: "Chegada",
+      dataIndex: "chegada",
+      key: "Chegada",
+      width: 100,
+    },
+    {
+      title: "Tempo decorrido",
+      dataIndex: "tempo_decorrido",
+      key: "Tempo decorrido",
+      width: 100,
+    },
+  ];
   return (
     <DivBackground>
       <CarouselStyled showThumbs={false} infiniteLoop={true}>
@@ -81,45 +157,46 @@ function Home() {
         ))}
       </CarouselStyled>
       <Linha>
-        <BotaoPlantao onClick={() => setOpenModal(true)}>
-          Iniciar Sessão
-        </BotaoPlantao>
+        {!ativa ? (
+          <BotaoPlantao onClick={() => setOpenModal(true)}>
+            Iniciar Sessão
+          </BotaoPlantao>
+        ) : (
+          <BotaoPlantao onClick={deleteAtividade}>Deslogar </BotaoPlantao>
+        )}
       </Linha>
-      <Form onSubmit={handleSubmit}>
-        <Modal
-          isOpen={openModal}
-          setModalOpen={() => setOpenModal(!openModal)}
-          onConfirm={handleConfirm}
-          onSubmit={handleSubmit}
-        >
-          <p> Confirmação De Plantão</p>
-          <p> Em qual hospital você atuará?</p>
-          <Label htmlFor="hospital"> </Label>
-          <Inputmodal
-            type="text"
-            id="hospital"
-            name="hospital"
-            required
-            value={hospital}
-            onChange={(e) => setHospital(e.target.value)}
-          />
-          <p>Qual seu cargo nesse hospital?</p>
-          <Label htmlFor="cargo"> </Label>
-          <Inputmodal
-            type="text"
-            id="cargo"
-            name="cargo"
-            required
-            value={cargo}
-            onChange={(e) => setCargo(e.target.value)}
-          />
-        </Modal>
-      </Form>
+      <Modal
+        isOpen={openModal}
+        setModalOpen={() => setOpenModal(!openModal)}
+        onSubmit={handleSubmit}
+      >
+        <p> Confirmação De Plantão</p>
+        <p> Em qual hospital você atuará?</p>
+        <Label htmlFor="hospital"> </Label>
+        <Inputmodal
+          type="text"
+          id="hospital"
+          name="hospital"
+          required
+          value={hospital}
+          onChange={(e) => setHospital(e.target.value)}
+        />
+        <p>Qual seu cargo nesse hospital?</p>
+        <Label htmlFor="cargo"> </Label>
+        <Inputmodal
+          type="text"
+          id="cargo"
+          name="cargo"
+          required
+          value={cargo}
+          onChange={(e) => setCargo(e.target.value)}
+        />
+      </Modal>
 
       <LinhaTabela>
         <Tabela1
-          dataSource={tableData}
-          columns={columns}
+          dataSource={dadosTabela}
+          columns={atividadeColumns}
           pagination={false}
           scroll={{ x: 150, y: 265 }}
         />
@@ -127,61 +204,5 @@ function Home() {
     </DivBackground>
   );
 }
-const dataSource = [
-  {
-    key: "1",
-    name: "Mike",
-    Hospital: "Senhora aparecida",
-    Cargo: "ortopedista",
-    Chegada: "20h",
-    Tempo_Decorrido: "10m",
-  },
-];
-const columns = [
-  {
-    title: "Médicos em plantão",
-    dataIndex: "name",
-    key: "Médicos em plantão",
-    width: 100,
-  },
-  {
-    title: "Hospital",
-    dataIndex: "Hospital",
-    key: "Hospital",
-    width: 100,
-  },
-
-  {
-    title: "Cargo",
-    dataIndex: "Cargo",
-    key: "Cargo",
-    width: 100,
-  },
-  {
-    title: "Chegada",
-    dataIndex: "Chegada",
-    key: "Chegada",
-    width: 100,
-  },
-  {
-    title: "Tempo decorrido",
-    dataIndex: "Tempo_Decorrido",
-    key: "Tempo decorrido",
-    width: 100,
-  },
-  {
-    title: "Desconectar",
-    key: "Action",
-    render: (text, record) => (
-      <BotaoSaida onClick={() => handleDisconnect(record.key)}>
-        Deslogar
-      </BotaoSaida>
-    ),
-    width: 70,
-  },
-];
-const handleDisconnect = (key) => {
-  alert(`desconectou a linha tal = ${key}`);
-};
 
 export default Home;
