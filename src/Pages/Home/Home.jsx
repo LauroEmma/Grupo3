@@ -114,29 +114,30 @@ function Home() {
       alert(erro.response.data.message);
     }
   };
+
   const images = [
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/68TsM9C/1.jpg",
+      download_url: "https://i.ibb.co/HpXGxwG/1.jpg",
     },
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/ykPy62L/2.jpg",
+      download_url: "https://i.ibb.co/bHmbQtH/2.jpg",
     },
     {
       author: "Lauro Emmanuel",
-      download_url: " https://i.ibb.co/d4TGfDK/4.jpg",
+      download_url: " https://i.ibb.co/8NHBnm8/3.jpg",
     },
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/QcBZVNs/3.png",
+      download_url: "https://i.ibb.co/JQwTKjd/4.jpg",
     },
   ];
   const atividadeColumns = [
     {
-      title: "Médicos em plantão",
+      title: "Médicos em atividade",
       dataIndex: "nome",
-      key: "Médicos em plantão",
+      key: "Médicos em atividade",
       width: 100,
     },
     {
@@ -214,7 +215,7 @@ function Home() {
           dataSource={dadosTabela}
           columns={atividadeColumns}
           pagination={false}
-          scroll={{ x: 150, y: 230 }}
+          scroll={{ x: 150, y: 150 }}
         />
       </LinhaTabela>
     </DivBackground>
