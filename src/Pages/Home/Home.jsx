@@ -6,7 +6,6 @@ import {
   BotaoPlantao,
   Inputmodal,
   BotaoSaida,
-  //  Informaçoesextras,
   Linha,
   LinhaTabela,
   Form,
@@ -20,15 +19,33 @@ import moment from "moment/moment";
 
 function Home() {
   const [cargo, setCargo] = useState("");
+  const [ativa, setAtiva] = useState(false);
   const [hospital, setHospital] = useState("");
   const [atividades, setAtividades] = useState([]);
   const idUsuario = useAuthStore((state) => state?.usuario?._id);
   const [openModal, setOpenModal] = useState(false);
   const [dadosTabela, setDadosTabela] = useState([]);
-  const [ativa, setAtiva] = useState(false);
+  const [plantoes, setPlantoes] = useState([]);
+  const [ativaPlantao, setAtivaPlantao] = useState(false);
+
+  const verificarPlantao = async () => {
+    const res = await api.get("/plantao");
+    setPlantoes(res.data);
+    const temPlantao = plantoes.find(
+      (atividade) => atividade?.id_usuario?._id === idUsuario
+    );
+    setAtivaPlantao(!!temPlantao);
+  };
+  useEffect(() => {
+    verificarPlantao();
+  }, [plantoes]);
 
   const handleSubmit = async () => {
     try {
+      if (ativaPlantao) {
+        alert("Você tem um plantão ativo!");
+        return;
+      }
       const res = await api.post("/atividade", {
         id_usuario: idUsuario,
         hospital: hospital,
@@ -69,7 +86,6 @@ function Home() {
 
   function mapearAtividade() {
     const resultadoMapeamento = atividades.map((atividade) => {
-      console.log(atividade);
       const chegada = moment(atividade.createdAt);
       const agora = moment();
       const calc = agora.diff(chegada, "minutes");
@@ -101,19 +117,19 @@ function Home() {
   const images = [
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/LC1BtBM/canal-de-reclamacoes.jpg",
+      download_url: "https://i.ibb.co/68TsM9C/1.jpg",
     },
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/qM035Cn/canal-de-ouvidoria.jpg",
+      download_url: "https://i.ibb.co/ykPy62L/2.jpg",
     },
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/8r5sCDY/compartilhe.jpg",
+      download_url: " https://i.ibb.co/d4TGfDK/4.jpg",
     },
     {
       author: "Lauro Emmanuel",
-      download_url: "https://i.ibb.co/H4fwRDP/eventos-mes.jpg",
+      download_url: "https://i.ibb.co/QcBZVNs/3.png",
     },
   ];
   const atividadeColumns = [
@@ -198,7 +214,7 @@ function Home() {
           dataSource={dadosTabela}
           columns={atividadeColumns}
           pagination={false}
-          scroll={{ x: 150, y: 265 }}
+          scroll={{ x: 150, y: 230 }}
         />
       </LinhaTabela>
     </DivBackground>

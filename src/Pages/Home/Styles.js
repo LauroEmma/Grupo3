@@ -108,22 +108,6 @@ export const Inputmodal = styled.input`
   font-weight: 700;
   line-height: normal;
 `;
-// export const Informaçoesextras = styled.textarea`
-//   color: #000;
-//   width: 324px;
-//   height: 131.615px;
-//   border-radius: 10px;
-//   border: 0.5px solid #000;
-//   background: #67b9e7;
-//   flex-shrink: 0;
-//   font-family: Inter;
-//   font-size: 15px;
-//   font-style: normal;
-//   font-weight: 700;
-//   line-height: normal;
-//   resize: none;
-//   text-align: top;
-// `;
 export const BotaoSaida = styled.button`
   width: 202px;
   height: 32px;

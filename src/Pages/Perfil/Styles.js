@@ -200,6 +200,7 @@ export const DivInfo = styled.div`
   padding-top: 4%;
   padding-left: 8%;
   padding-bottom: 1%;
+  text-decoration: underline;
 
   @media (max-width: 1300px) {
     font-size: 100%;

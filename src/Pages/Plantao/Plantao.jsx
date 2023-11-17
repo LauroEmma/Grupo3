@@ -22,10 +22,27 @@ function Plantao() {
   const [plantoes, setPlantoes] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [dadosTabela, setDadosTabela] = useState([]);
-  const [ativa, setAtiva] = useState(false);
+  const [ativaPlantao, setAtivaPlantao] = useState(false);
+  const [atividades, setAtividades] = useState([]);
+  const [ativaHome, setAtivaHome] = useState(false);
 
+  const verificarAtividade = async () => {
+    const res = await api.get("/atividade");
+    setAtividades(res.data);
+    const temAtividade = atividades.find(
+      (atividade) => atividade?.id_usuario?._id === idUsuario
+    );
+    setAtivaHome(!!temAtividade);
+  };
+  useEffect(() => {
+    verificarAtividade();
+  }, [atividades]);
   const handleSubmit = async () => {
     try {
+      if (ativaHome) {
+        alert("Você tem uma sessão ativa!");
+        return;
+      }
       const res = await api.post("/plantao", {
         id_usuario: idUsuario,
         hospital: hospital,
@@ -58,7 +75,7 @@ function Plantao() {
     const temPlantao = plantoes.find(
       (plantao) => plantao.id_usuario?._id === idUsuario
     );
-    setAtiva(!!temPlantao);
+    setAtivaPlantao(!!temPlantao);
     mapearPlantoes();
   };
   useEffect(() => {
@@ -67,7 +84,6 @@ function Plantao() {
 
   function mapearPlantoes() {
     const resultadoMapeamento = plantoes.map((plantao) => {
-      console.log(plantao);
       const chegada = moment(plantao.createdAt);
       const agora = moment();
       const calc = agora.diff(chegada, "minutes");
@@ -132,7 +148,7 @@ function Plantao() {
   return (
     <DivBackground>
       <Linha>
-        {!ativa ? (
+        {!ativaPlantao ? (
           <BotaoPlantao onClick={() => setOpenModal(true)}>
             Iniciar Plantao
           </BotaoPlantao>

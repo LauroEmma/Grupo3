@@ -63,8 +63,15 @@ function Perfil() {
             <DivNome>{usuario.nome}</DivNome>
           </DivUsuario>
           <DivInfAdic>
-            <DivCargo>{usuario.cargo}</DivCargo>
-            <DivEmail>{usuario.email}</DivEmail>
+            <DivCargo>
+              {" "}
+              <span style={{ textDecoration: "underline" }}>Cargo:</span>{" "}
+              {usuario.cargo}
+            </DivCargo>
+            <DivEmail>
+              <span style={{ textDecoration: "underline" }}>Email:</span>{" "}
+              {usuario.email}
+            </DivEmail>
           </DivInfAdic>
           <DivInfAdic>
             <DivInfo>Informações adicionais:</DivInfo>

@@ -30,6 +30,8 @@ export const Input1 = styled.input`
   font-weight: 400;
   line-height: normal;
   padding-left: 24px;
+  margin-bottom: 10px;
+  border: 1px solid white;
   @media (max-width: 1300px) {
     width: calc(414px / 3 * 2);
     height: calc(61px / 3 * 2);

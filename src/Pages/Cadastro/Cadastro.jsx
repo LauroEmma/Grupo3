@@ -77,6 +77,24 @@ function Cadastro() {
             <span> tempo de trabalho </span>{" "}
           </Fonte3>
           <Form onSubmit={handleSubmit}>
+            <Label htmlFor="nome"></Label>
+            <Input1
+              type="text"
+              placeholder="Nome"
+              id="nome"
+              name="nome"
+              required
+              onChange={(e) => setNome(e.target.value)}
+            ></Input1>
+            <Label htmlFor="cargo"></Label>
+            <Input1
+              type="text"
+              placeholder="Cargo"
+              id="cargo"
+              name="cargo"
+              required
+              onChange={(e) => setCargo(e.target.value)}
+            ></Input1>
             <Label htmlFor="email"></Label>
             <Input1
               type="email"
@@ -104,25 +122,6 @@ function Cadastro() {
               onChange={(e) => setConfirmarSenha(e.target.value)}
             ></Input1>
 
-            <Label htmlFor="cargo"></Label>
-            <Input1
-              type="text"
-              placeholder="cargo"
-              id="cargo"
-              name="cargo"
-              required
-              onChange={(e) => setCargo(e.target.value)}
-            ></Input1>
-
-            <Label htmlFor="nome"></Label>
-            <Input1
-              type="text"
-              placeholder="Nome"
-              id="nome"
-              name="nome"
-              required
-              onChange={(e) => setNome(e.target.value)}
-            ></Input1>
             <DivCheckbox>
               <Fonte4> Médico de Plantão </Fonte4>
               <InputCheckbox
@@ -131,12 +130,9 @@ function Cadastro() {
                 id="myCheckbox"
               ></InputCheckbox>
             </DivCheckbox>
-            <DivGap2>
-              <Fonte1> Já possui login? </Fonte1>
-            </DivGap2>
+            <DivGap2></DivGap2>
             <DivGap2>
               <Botao type="submit"> Cadastrar </Botao>
-              <Botao onClick={() => Navigate("/login")}> Logue aqui!!!</Botao>
             </DivGap2>
           </Form>
         </DivGap>

@@ -63,7 +63,6 @@ function Login() {
             </Fonte1>
           </DivGap3>
           <DivGap4>
-            <Fonte2> Bem vindo de volta! Faça o seu login aqui </Fonte2>
             <Form onSubmit={handleSubmit}>
               <Label htmlFor="email"> </Label>
               <Input1
@@ -87,11 +86,8 @@ function Login() {
               <Botao2 type="submit"> Logar </Botao2>
             </Form>
             <DivGap5>
-              <Fonte3> Não tem login? </Fonte3>
-              <Botao3 onClick={() => navigate("/Cadastro")}>
-                {" "}
-                Cadastre-se aqui{" "}
-              </Botao3>
+              <Fonte3> Primeira vez aqui? </Fonte3>
+              <Botao3 onClick={() => navigate("/Cadastro")}> Cadastrar </Botao3>
             </DivGap5>
           </DivGap4>
         </DivGap2>

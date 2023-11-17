@@ -97,6 +97,8 @@ export const Input1 = styled.input`
   border-style: none;
   padding-left: calc(30 * 0.75px);
   font-size: calc(22 * 0.75px);
+  margin-bottom: 10px;
+  border: 1px solid white;
   @media (max-width: 1300px) {
     width: 267.3px;
     height: 38px;

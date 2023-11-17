@@ -24,9 +24,7 @@ const Sidebar = ({ active }) => {
           <SidebarItem
             Icon={FaHome}
             Text="Home"
-            onClick={() => (
-              navigate("/"), closeSidebar(), console.log(usuario)
-            )}
+            onClick={() => (navigate("/"), closeSidebar())}
           />
         )}
         {location.pathname !== "/plantao" && usuario.plantao !== false && (
